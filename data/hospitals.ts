@@ -8,7 +8,7 @@ const items: IItem[] = [
       street: "Vídeňská 800",
       district: "Praha 4",
       city: "Praha",
-      note: "Pavilon B1 (vpravo od hlavní brány)",
+      note: "pavilon B1 - vpravo od hlavní brány",
     },
     contact: {
       phoneNumbers: [261082520, 603566584],
@@ -23,7 +23,7 @@ const items: IItem[] = [
       street: "V Úvalu 84",
       district: "Praha 5",
       city: "Praha",
-      note: "Modrá budova P",
+      note: "modrá budova P",
     },
     contact: {
       phoneNumbers: [224438590],
@@ -38,7 +38,7 @@ const items: IItem[] = [
       street: "Budínova 2",
       district: "Praha 8",
       city: "Praha",
-      note: "Přízemí budovy č. 2",
+      note: "přízemí budovy č. 2",
     },
     contact: {
       phoneNumbers: [283842222, 266083301],
@@ -53,7 +53,7 @@ const items: IItem[] = [
       street: "Šrobárova 50",
       district: "Praha 10",
       city: "Praha",
-      note: "Přízemí pavilonu S",
+      note: "přízemí pavilonu S",
     },
     contact: {
       phoneNumbers: [267163778],
@@ -68,7 +68,7 @@ const items: IItem[] = [
       street: "U Vojenské nemocnice 1200",
       district: "Praha 6",
       city: "Praha",
-      note: "Budova CH2",
+      note: "budova CH2",
     },
     contact: {
       phoneNumbers: [973203571],
@@ -83,7 +83,6 @@ const items: IItem[] = [
       street: "Šustova 1930/2",
       district: "Praha 4",
       city: "Praha",
-      note: "",
     },
     contact: {
       phoneNumbers: [296506302],

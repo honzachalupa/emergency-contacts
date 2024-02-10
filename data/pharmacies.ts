@@ -8,7 +8,6 @@ const items: IItem[] = [
       street: "Na Františku 847/8",
       district: "Praha 1",
       city: "Praha",
-      note: "test note",
     },
     contact: {
       phoneNumbers: [222801397],

@@ -3,6 +3,7 @@ type LanguageType = "cs" | "en";
 type KeyType =
   | "app.name"
   | "app.description"
+  | "app.reportProblem"
   | "common.hospital"
   | "common.hospitals"
   | "common.pharmacy"
@@ -10,6 +11,7 @@ type KeyType =
   | "common.vet"
   | "common.vets"
   | "address.address"
+  | "address.navigate"
   | "address.note"
   | "contact.phoneNumber"
   | "contact.emailAddress"
@@ -21,10 +23,20 @@ type Translations = {
   };
 };
 
-const translations: Translations = {
+export const sharedTranslations = {
   cs: {
     "app.name": "Pohotovostní kontakty",
     "app.description": "Najděte nejbližší pohotovost, lékárnu nebo veterináře.",
+  },
+  en: {
+    "app.name": "Emergency Contacts",
+    "app.description": "Find the nearest emergency room, pharmacy, or vet.",
+  },
+};
+
+const translations: Translations = {
+  cs: {
+    "app.reportProblem": "Nahlásit chybu",
     "common.hospital": "Pohotovost",
     "common.hospitals": "Pohotovosti",
     "common.pharmacy": "Nonstop lékárna",
@@ -32,14 +44,15 @@ const translations: Translations = {
     "common.vet": "Veterinární pohotovost",
     "common.vets": "Veterinární pohotovosti",
     "address.address": "Adresa",
+    "address.navigate": "Navigovat",
     "address.note": "Note",
-    "contact.phoneNumber": "Telefon",
-    "contact.emailAddress": "E-mail",
+    "contact.phoneNumber": "Zavolat",
+    "contact.emailAddress": "Napsat e-mail",
     "contact.url": "Web",
+    ...sharedTranslations.cs,
   },
   en: {
-    "app.name": "Emergency Contacts",
-    "app.description": "Find the nearest emergency room, pharmacy, or vet.",
+    "app.reportProblem": "Report a problem",
     "common.hospital": "Emergency Room",
     "common.hospitals": "Emergency Rooms",
     "common.pharmacy": "Nonstop Pharmacy",
@@ -47,10 +60,12 @@ const translations: Translations = {
     "common.vet": "Nonstop Vet",
     "common.vets": "Nonstop Vets",
     "address.address": "Address",
+    "address.navigate": "Navigate",
     "address.note": "Note",
-    "contact.phoneNumber": "Phone Number",
-    "contact.emailAddress": "E-mail Address",
+    "contact.phoneNumber": "Call",
+    "contact.emailAddress": "E-mail",
     "contact.url": "Website",
+    ...sharedTranslations.en,
   },
 };
 

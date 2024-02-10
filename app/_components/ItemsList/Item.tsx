@@ -1,69 +1,95 @@
-import {
-  formatAddress,
-  formatPhoneNumber,
-  formatPhoneNumberHref,
-  getMapUrl,
-} from "@/helpers";
+import { formatPhoneNumber, formatPhoneNumberHref, getMapUrl } from "@/helpers";
 import { useTranslations } from "@/hooks";
 import { IItem } from "@/types";
-import { Fragment } from "react";
+import MailIcon from "@mui/icons-material/Mail";
+import NavigationIcon from "@mui/icons-material/Navigation";
+import PhoneIcon from "@mui/icons-material/Phone";
+import WebIcon from "@mui/icons-material/Web";
+import {
+  Button,
+  Card,
+  Divider,
+  Dropdown,
+  Menu,
+  MenuButton,
+  MenuItem,
+  Typography,
+} from "@mui/joy";
 
 export const Item: React.FC<IItem> = ({ name, address, contact }) => {
   const { t } = useTranslations();
 
   return (
-    <li className="my-5">
-      <h4 className="font-bold">{name}</h4>
+    <Card variant="outlined">
+      <li className="my-5">
+        <Typography level="h3">{name}</Typography>
 
-      <ul>
-        <li>
-          <p className="font-medium">{t("address.address")}</p>
-          <p>{formatAddress(address)}</p>
+        <ul>
+          <li>
+            <Typography>{address.street}</Typography>
+            <Typography>{address.district}</Typography>
 
-          {address.note && <p className="opacity-50">({address.note})</p>}
+            {address.note && (
+              <Typography level="body-sm">({address.note})</Typography>
+            )}
 
-          <a href={getMapUrl(address)} className="underline">
-            Navigovat
-          </a>
-        </li>
+            <Button
+              component="a"
+              href={getMapUrl(address)}
+              startDecorator={<NavigationIcon />}
+            >
+              {t("address.navigate")}
+            </Button>
+          </li>
 
-        <li>
-          <p className="font-medium">{t("contact.phoneNumber")}</p>
+          <Divider />
 
-          {contact.phoneNumbers.map((phoneNumber, index) => (
-            <Fragment key={phoneNumber}>
-              <a
-                href={formatPhoneNumberHref(phoneNumber)}
-                className="underline"
+          <li>
+            <Dropdown>
+              <MenuButton variant="solid" startDecorator={<PhoneIcon />}>
+                {t("contact.phoneNumber")}
+              </MenuButton>
+
+              <Menu>
+                {contact.phoneNumbers.map((phoneNumber) => (
+                  <MenuItem key={phoneNumber}>
+                    <a
+                      href={formatPhoneNumberHref(phoneNumber)}
+                      className="underline"
+                    >
+                      {formatPhoneNumber(phoneNumber)}
+                    </a>
+                  </MenuItem>
+                ))}
+              </Menu>
+            </Dropdown>
+          </li>
+
+          {contact.emailAddress && (
+            <li>
+              <Button
+                component="a"
+                href={`mailto:${contact.emailAddress}`}
+                startDecorator={<MailIcon />}
               >
-                {formatPhoneNumber(phoneNumber)}
-              </a>
+                {t("contact.emailAddress")}
+              </Button>
+            </li>
+          )}
 
-              {index < contact.phoneNumbers.length - 1 && ", "}
-            </Fragment>
-          ))}
-        </li>
-
-        {contact.emailAddress && (
-          <li>
-            <p className="font-medium">{t("contact.emailAddress")}</p>
-
-            <a href={`mailto:${contact.emailAddress}`} className="underline">
-              {contact.emailAddress}
-            </a>
-          </li>
-        )}
-
-        {contact.url && (
-          <li>
-            <p className="font-medium">{t("contact.url")}</p>
-
-            <a href={contact.url} className="underline">
-              Web
-            </a>
-          </li>
-        )}
-      </ul>
-    </li>
+          {contact.url && (
+            <li>
+              <Button
+                component="a"
+                href={contact.url}
+                startDecorator={<WebIcon />}
+              >
+                {t("contact.url")}
+              </Button>
+            </li>
+          )}
+        </ul>
+      </li>
+    </Card>
   );
 };

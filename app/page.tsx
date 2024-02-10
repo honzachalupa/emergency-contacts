@@ -1,4 +1,5 @@
 import { useTranslations } from "@/hooks";
+import { Typography } from "@mui/joy";
 import { ItemsList } from "./_components/ItemsList";
 
 export default function Home({ params: { lang } }: any) {
@@ -6,8 +7,8 @@ export default function Home({ params: { lang } }: any) {
 
   return (
     <main className="p-5">
-      <h1 className="font-bold">{t("app.name")}</h1>
-      <h2>{t("app.description")}</h2>
+      <Typography level="h1">{t("app.name")}</Typography>
+      <Typography>{t("app.description")}</Typography>
 
       <ItemsList />
     </main>
