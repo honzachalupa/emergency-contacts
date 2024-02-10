@@ -1,6 +1,6 @@
-import { Item } from "@/types";
+import { IItem } from "@/types";
 
-const items: Item[] = [
+const items: IItem[] = [
   {
     type: "vet",
     name: "Veterinární pohotovost Duchek",

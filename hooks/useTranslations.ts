@@ -54,6 +54,6 @@ const translations: Translations = {
   },
 };
 
-export const useTranslations = (language: LanguageType) => ({
-  t: (key: KeyType) => translations[language][key] || key,
+export const useTranslations = (/* language: LanguageType */) => ({
+  t: (key: KeyType) => translations["cs"][key] || key,
 });

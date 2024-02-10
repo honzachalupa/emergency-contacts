@@ -1,21 +1,21 @@
-export type ItemType = "hospital" | "vet" | "pharmacy";
+export type TItemType = "hospital" | "vet" | "pharmacy";
 
-export interface Address {
+export interface IAddress {
   street: string;
   district: string;
   city: "Praha";
   note?: string;
 }
 
-export interface Contact {
+export interface IContact {
   phoneNumbers: number[];
   emailAddress?: string;
   url?: string;
 }
 
-export interface Item {
-  type: ItemType;
+export interface IItem {
+  type: TItemType;
   name: string;
-  address: Address;
-  contact: Contact;
+  address: IAddress;
+  contact: IContact;
 }

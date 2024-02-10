@@ -2,7 +2,7 @@ import { useTranslations } from "@/hooks";
 import { ItemsList } from "./_components/ItemsList";
 
 export default function Home({ params: { lang } }: any) {
-  const { t } = useTranslations("cs");
+  const { t } = useTranslations();
 
   return (
     <main className="p-5">
