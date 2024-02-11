@@ -1,4 +1,20 @@
-export type TItemCategory = "hospital" | "vet" | "pharmacy";
+import { TTranslationKey } from "../hooks";
+
+export enum EItemCategory {
+  hospital = "hospital",
+  vet = "vet",
+  pharmacy = "pharmacy",
+}
+
+export type TItemCategory = keyof typeof EItemCategory;
+
+export const categories: {
+  [key in TItemCategory]: TTranslationKey;
+} = {
+  hospital: "common.hospital",
+  pharmacy: "common.pharmacy",
+  vet: "common.vet",
+};
 
 export interface IAddress {
   street: string;

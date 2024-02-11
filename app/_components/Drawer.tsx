@@ -1,4 +1,3 @@
-import { useIsMobile } from "@/hooks/useIsMobile";
 import {
   DialogContent,
   DialogTitle,
@@ -8,18 +7,23 @@ import {
 } from "@mui/joy";
 
 interface IProps {
-  header: React.ReactNode;
+  anchor?: "left" | "right" | "top" | "bottom";
+  fill?: boolean;
+  header?: React.ReactNode;
   children: React.ReactNode;
 }
 
-export const Drawer: React.FC<IProps> = ({ header, children }) => {
-  const isMobile = useIsMobile();
-
+export const Drawer: React.FC<IProps> = ({
+  anchor = "left",
+  fill,
+  header,
+  children,
+}) => {
   return (
     <JoyDrawer
       size="md"
       variant="plain"
-      anchor={isMobile ? "bottom" : "left"}
+      anchor={anchor}
       hideBackdrop
       open
       slotProps={{
@@ -42,16 +46,17 @@ export const Drawer: React.FC<IProps> = ({ header, children }) => {
         sx={{
           borderRadius: "md",
           p: 2,
-          display: "flex",
-          flexDirection: "column",
-          gap: 2,
-          height: "100%",
-          overflow: "auto",
+          height: fill ? "100%" : "auto",
+          overflowY: "auto",
         }}
       >
-        <DialogTitle>{header}</DialogTitle>
+        {header && (
+          <>
+            <DialogTitle>{header}</DialogTitle>
 
-        <Divider sx={{ mt: "auto" }} />
+            <Divider sx={{ mt: "auto" }} />
+          </>
+        )}
 
         <DialogContent sx={{ gap: 2 }}>{children}</DialogContent>
       </Sheet>

@@ -1,32 +1,28 @@
 import { izs } from "@/data/izs";
-import { Button, Sheet, Stack, Typography } from "@mui/joy";
+import { Box, Button, Grid, Typography } from "@mui/joy";
 import { Icons } from "./Icons";
 
 export const IZS: React.FC = () => {
   return (
-    <Sheet
-      variant="outlined"
-      sx={{
-        p: 2,
-        my: 2,
-      }}
-    >
-      <Typography level="title-md" sx={{ pb: 1, mt: -1 }}>
+    <Box>
+      <Typography level="title-md" sx={{ pb: 1 }}>
         Kontakty IZS
       </Typography>
 
-      <Stack direction="row" spacing={1}>
+      <Grid container columns={2} spacing={1} sx={{ flexGrow: 1 }}>
         {izs.map(({ name, phoneNumber }) => (
-          <Button
-            key={name}
-            component="a"
-            href={`tel:${phoneNumber}`}
-            startDecorator={<Icons.Phone />}
-          >
-            {phoneNumber}
-          </Button>
+          <Grid key={name}>
+            <Button
+              component="a"
+              variant="soft"
+              href={`tel:${phoneNumber}`}
+              startDecorator={<Icons.Phone color="error" />}
+            >
+              {name}
+            </Button>
+          </Grid>
         ))}
-      </Stack>
-    </Sheet>
+      </Grid>
+    </Box>
   );
 };

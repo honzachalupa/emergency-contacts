@@ -2,11 +2,12 @@
 
 import { formatPhoneNumber, formatPhoneNumberHref } from "@/helpers";
 import { useTranslations } from "@/hooks";
-import { IItem } from "@/types";
+import { IItem, categories } from "@/types";
 import {
   Box,
   Button,
   Card,
+  Chip,
   Dropdown,
   Link,
   Menu,
@@ -21,6 +22,7 @@ export const formatItemHtmlId = (name: IItem["name"]) =>
   name.replace(/\s/, "-");
 
 export const Item: React.FC<IItem & { isHighlighted: boolean }> = ({
+  category,
   name,
   address,
   contact,
@@ -33,7 +35,11 @@ export const Item: React.FC<IItem & { isHighlighted: boolean }> = ({
   return (
     <div id={formatItemHtmlId(name)}>
       <Card variant={isHighlighted ? "solid" : "outlined"} sx={{ p: 2, my: 2 }}>
-        <Typography level="h3">{name}</Typography>
+        <Stack direction="row" alignItems="center" spacing={1}>
+          <Typography level="h3">{name}</Typography>
+
+          <Chip>{t(categories[category])}</Chip>
+        </Stack>
 
         <Box>
           <Typography>{address.street}</Typography>

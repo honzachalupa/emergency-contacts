@@ -1,6 +1,7 @@
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import HomeIcon from "@mui/icons-material/Home";
+import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
 import MailIcon from "@mui/icons-material/Mail";
 import NavigationIcon from "@mui/icons-material/Navigation";
 import PhoneIcon from "@mui/icons-material/Phone";
@@ -16,4 +17,5 @@ export const Icons = {
   Navigation: NavigationIcon,
   Phone: PhoneIcon,
   Web: WebIcon,
+  LocalHospital: LocalHospitalIcon,
 };

@@ -1,6 +1,6 @@
 type LanguageType = "cs" | "en";
 
-type KeyType =
+export type TTranslationKey =
   | "app.name"
   | "app.description"
   | "app.reportProblem"
@@ -21,7 +21,7 @@ type KeyType =
 
 type Translations = {
   [language in LanguageType]: {
-    [key in KeyType]: string;
+    [key in TTranslationKey]: string;
   };
 };
 
@@ -76,5 +76,5 @@ const translations: Translations = {
 };
 
 export const useTranslations = (/* language: LanguageType */) => ({
-  t: (key: KeyType) => translations["cs"][key] || key,
+  t: (key: TTranslationKey) => translations["cs"][key] || key,
 });

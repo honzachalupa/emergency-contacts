@@ -2,6 +2,7 @@
 
 import data from "@/data";
 import { useTranslations } from "@/hooks";
+import { useIsMobile } from "@/hooks/useIsMobile";
 import { Box, Stack, Typography } from "@mui/joy";
 import { useRef } from "react";
 import { Drawer } from "./_components/Drawer";
@@ -17,20 +18,24 @@ const markers: IMarker[] = data.map(({ name, category, coordinates }) => ({
 
 export default function Home({ params: { lang } }: any) {
   const { t } = useTranslations();
+  const isMobile = useIsMobile();
 
   const listRef = useRef<IItemsListRef>(null);
 
   return (
-    <Box component="main" sx={{ p: 2 }}>
-      <Typography level="h1">{t("app.name")}</Typography>
-      <Typography>{t("app.description")}</Typography>
-
+    <Box component="main">
       <Map
         markers={markers}
         onMarkerClick={(name) => listRef.current?.focusItem(name!)}
       />
 
+      <Drawer anchor="right">
+        <IZS />
+      </Drawer>
+
       <Drawer
+        anchor={isMobile ? "bottom" : "left"}
+        fill
         header={
           <Stack>
             <Typography level="h1">{t("app.name")}</Typography>
@@ -38,8 +43,6 @@ export default function Home({ params: { lang } }: any) {
           </Stack>
         }
       >
-        <IZS />
-
         <ItemsList ref={listRef} />
       </Drawer>
     </Box>

@@ -3,20 +3,13 @@
 import data from "@/data";
 import { alphanumericSorter, removeArrayDuplicates } from "@/helpers";
 import { useTranslations } from "@/hooks";
-import { IItemsGroup, TItemCategory } from "@/types";
-import {
-  Autocomplete,
-  Button,
-  Grid,
-  Sheet,
-  ToggleButtonGroup,
-  Typography,
-} from "@mui/joy";
+import { useIsMobile } from "@/hooks/useIsMobile";
+import { TItemCategory, categories } from "@/types";
+import { Autocomplete, Button, Grid, Sheet, ToggleButtonGroup } from "@mui/joy";
 import { useEffect, useState } from "react";
 import { Icons } from "./Icons";
 
 interface IProps {
-  groups: IItemsGroup[];
   onChange: ({ categories, district }: TFilter) => void;
 }
 
@@ -27,11 +20,12 @@ export type TFilter = {
 
 export const initialFilter: TFilter = {
   categories: ["hospital", "pharmacy", "vet"],
-  district: "",
+  district: null,
 };
 
-export const Filter: React.FC<IProps> = ({ groups, onChange }) => {
+export const Filter: React.FC<IProps> = ({ onChange }) => {
   const { t } = useTranslations();
+  const isMobile = useIsMobile();
 
   const [filter_categories, setFilter_categories] = useState<
     TFilter["categories"]
@@ -63,23 +57,22 @@ export const Filter: React.FC<IProps> = ({ groups, onChange }) => {
 
   return (
     <Sheet
-      variant="outlined"
+      variant="plain"
       sx={{
-        p: 2,
         my: 2,
       }}
     >
-      <Typography level="title-md" sx={{ pb: 1, mt: -1 }}>
-        Filtr
-      </Typography>
-
-      <Grid container rowSpacing={2} columnSpacing={2}>
-        <Grid>
-          <ToggleButtonGroup value={filter_categories}>
-            {groups.map(({ id, label }) => {
+      <Grid container rowSpacing={2} columnSpacing={1}>
+        <Grid flexBasis="100%">
+          <ToggleButtonGroup
+            value={filter_categories}
+            orientation="horizontal"
+            buttonFlex="100%"
+          >
+            {Object.entries(categories).map(([id, translationKey]) => {
               const items = data.filter(({ category }) => category === id);
 
-              const icon = filter_categories.includes(id) ? (
+              const icon = filter_categories.includes(id as any) ? (
                 <Icons.CheckBox />
               ) : (
                 <Icons.CheckBoxOutlineBlank />
@@ -90,16 +83,16 @@ export const Filter: React.FC<IProps> = ({ groups, onChange }) => {
                   key={id}
                   value={id}
                   startDecorator={icon}
-                  onClick={() => handleTypeChange(id)}
+                  onClick={() => handleTypeChange(id as any)}
                 >
-                  {label} ({items.length})
+                  {t(translationKey)}
                 </Button>
               );
             })}
           </ToggleButtonGroup>
         </Grid>
 
-        <Grid>
+        <Grid flexBasis="100%">
           <Autocomplete
             autoSelect
             placeholder={t("address.district")}
