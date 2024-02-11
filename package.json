@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "create-ads-txt": "create-ads-txt"
   },
   "dependencies": {
     "@emotion/react": "^11.11.3",
@@ -14,6 +15,7 @@
     "@mui/icons-material": "^5.15.9",
     "@mui/joy": "^5.0.0-beta.27",
     "next": "14.1.0",
+    "next-google-adsense": "^1.0.6",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
   },

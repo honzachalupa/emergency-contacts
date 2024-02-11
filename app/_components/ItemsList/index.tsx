@@ -60,8 +60,12 @@ export const ItemsList = () => {
         );
 
         return (
-          <Sheet key={id} variant="outlined" sx={{ padding: 2 }}>
-            <section className="my-2 py-2">
+          <Sheet
+            key={id}
+            variant="outlined"
+            sx={{ padding: 2, marginBottom: 2 }}
+          >
+            <section>
               <Typography level="h2">{label}</Typography>
 
               <ul style={{ listStyle: "none", padding: 0 }}>
@@ -77,9 +81,11 @@ export const ItemsList = () => {
       {!filteredGroups.length && <Typography>Upravte filtr</Typography>}
 
       <Button
+        component="a"
+        href={`mailto:janchalupa@outlook.cz`}
         variant="outlined"
         startDecorator={<ReportProblemIcon />}
-        sx={{ marginTop: 5 }}
+        sx={{ marginTop: 2 }}
       >
         {t("app.reportProblem")}
       </Button>
