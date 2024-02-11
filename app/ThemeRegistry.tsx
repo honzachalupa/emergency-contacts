@@ -56,7 +56,7 @@ export const ThemeRegistry: React.FC<{ children: ReactNode; options: any }> = (
 
   return (
     <CacheProvider value={cache}>
-      <CssVarsProvider>
+      <CssVarsProvider defaultMode="system">
         <CssBaseline />
 
         {children}

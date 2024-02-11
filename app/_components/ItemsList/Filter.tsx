@@ -7,8 +7,8 @@ import { IItemsGroup, TItemType } from "@/types";
 import {
   Autocomplete,
   Button,
+  Grid,
   Sheet,
-  Stack,
   ToggleButtonGroup,
   Typography,
 } from "@mui/joy";
@@ -73,37 +73,41 @@ export const Filter: React.FC<IProps> = ({ groups, onChange }) => {
         Filtr
       </Typography>
 
-      <Stack direction="row" spacing={2}>
-        <ToggleButtonGroup value={filter_types}>
-          {groups.map(({ id, label, items }) => {
-            const icon = filter_types.includes(id) ? (
-              <Icons.CheckBox />
-            ) : (
-              <Icons.CheckBoxOutlineBlank />
-            );
+      <Grid container rowSpacing={2} columnSpacing={2}>
+        <Grid>
+          <ToggleButtonGroup value={filter_types}>
+            {groups.map(({ id, label, items }) => {
+              const icon = filter_types.includes(id) ? (
+                <Icons.CheckBox />
+              ) : (
+                <Icons.CheckBoxOutlineBlank />
+              );
 
-            return (
-              <Button
-                key={id}
-                value={id}
-                startDecorator={icon}
-                onClick={() => handleTypeChange(id)}
-              >
-                {label} ({items.length})
-              </Button>
-            );
-          })}
-        </ToggleButtonGroup>
+              return (
+                <Button
+                  key={id}
+                  value={id}
+                  startDecorator={icon}
+                  onClick={() => handleTypeChange(id)}
+                >
+                  {label} ({items.length})
+                </Button>
+              );
+            })}
+          </ToggleButtonGroup>
+        </Grid>
 
-        <Autocomplete
-          autoSelect
-          placeholder={t("address.district")}
-          options={districtOptions}
-          startDecorator={<Icons.Home />}
-          freeSolo
-          onChange={(_, value) => setFilter_district(value)}
-        />
-      </Stack>
+        <Grid>
+          <Autocomplete
+            autoSelect
+            placeholder={t("address.district")}
+            options={districtOptions}
+            startDecorator={<Icons.Home />}
+            freeSolo
+            onChange={(_, value) => setFilter_district(value)}
+          />
+        </Grid>
+      </Grid>
     </Sheet>
   );
 };
