@@ -4,36 +4,42 @@ import { alphanumericSorter } from "@/helpers";
 import { useTranslations } from "@/hooks";
 import { IItem, IItemsGroup } from "@/types";
 import { Button, Sheet, Typography } from "@mui/joy";
-import { useState } from "react";
+import { forwardRef, useImperativeHandle, useState } from "react";
 import data from "../../../data";
 import { Icons } from "../Icons";
 import { Filter, TFilter, initialFilter } from "./Filter";
-import { Item } from "./Item";
+import { Item, formatItemId } from "./Item";
 
-export const ItemsList = () => {
+type FocusItemIdType = IItem["id"] | null;
+
+export interface IItemsListRef {
+  focusItem: (id: FocusItemIdType) => void;
+}
+
+export const ItemsList = forwardRef<IItemsListRef, unknown>((_, ref) => {
   const { t } = useTranslations();
 
   const [filter, setFilter] = useState<TFilter>(initialFilter);
+  const [selectedItemId, setSelectedItemId] = useState<FocusItemIdType>(null);
 
   const groups: IItemsGroup[] = [
     {
       id: "hospital",
       label: t("common.hospitals"),
-      items: data.filter(({ type }) => type === "hospital"),
     },
     {
       id: "pharmacy",
       label: t("common.pharmacies"),
-      items: data.filter(({ type }) => type === "pharmacy"),
     },
     {
       id: "vet",
       label: t("common.vets"),
-      items: data.filter(({ type }) => type === "vet"),
     },
   ];
 
-  const filteredGroups = groups.filter(({ id }) => filter.types.includes(id));
+  const filteredGroups = groups.filter(({ id }) =>
+    filter.categories.includes(id)
+  );
 
   const filterItems = (items: IItem[]) =>
     filter.district
@@ -44,24 +50,50 @@ export const ItemsList = () => {
         )
       : items;
 
+  const focusItem = (id: FocusItemIdType) => {
+    setSelectedItemId(id);
+
+    if (id) {
+      document
+        .getElementById(formatItemId(id))
+        ?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  useImperativeHandle(
+    ref,
+    (): IItemsListRef => ({
+      focusItem: (id: FocusItemIdType) => focusItem(id),
+    })
+  );
+
   return (
     <>
       <Filter groups={groups} onChange={setFilter} />
 
-      {filteredGroups.map(({ id, label, items }) => {
-        const filteredItems = filterItems(items).sort((a, b) =>
+      {filteredGroups.map(({ id, label }) => {
+        const filteredItems = filterItems(
+          data.filter(({ category }) => category === id)
+        ).sort((a, b) =>
           alphanumericSorter(a.address.district, b.address.district)
         );
 
         return (
-          <Sheet key={id} variant="outlined" sx={{ p: 2, mb: 2 }}>
-            <section>
-              <Typography level="h2">{label}</Typography>
+          <Sheet
+            key={id}
+            variant="outlined"
+            component="section"
+            sx={{ p: 2, mb: 2 }}
+          >
+            <Typography level="h2">{label}</Typography>
 
-              {filteredItems.map((item) => (
-                <Item key={item.name} {...item} />
-              ))}
-            </section>
+            {filteredItems.map((item) => (
+              <Item
+                key={item.id}
+                isHighlighted={selectedItemId === item.id}
+                {...item}
+              />
+            ))}
           </Sheet>
         );
       })}
@@ -79,4 +111,6 @@ export const ItemsList = () => {
       </Button>
     </>
   );
-};
+});
+
+ItemsList.displayName = "ItemsList";

@@ -13,6 +13,7 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.15.9",
     "@mui/joy": "^5.0.0-beta.27",
+    "@vis.gl/react-google-maps": "^0.6.1",
     "next": "14.1.0",
     "next-google-adsense": "^1.0.6",
     "react": "^18.0.0",

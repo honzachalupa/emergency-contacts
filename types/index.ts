@@ -1,4 +1,4 @@
-export type TItemType = "hospital" | "vet" | "pharmacy";
+export type TItemCategory = "hospital" | "vet" | "pharmacy";
 
 export interface IAddress {
   street: string;
@@ -14,14 +14,16 @@ export interface IContact {
 }
 
 export interface IItem {
-  type: TItemType;
+  id: number;
+  category: TItemCategory;
   name: string;
   address: IAddress;
   contact: IContact;
+  coordinates: [number, number];
+  googleUrl: string;
 }
 
 export interface IItemsGroup {
-  id: TItemType;
+  id: TItemCategory;
   label: string;
-  items: IItem[];
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { formatPhoneNumber, formatPhoneNumberHref, getMapUrl } from "@/helpers";
+import { formatPhoneNumber, formatPhoneNumberHref } from "@/helpers";
 import { useTranslations } from "@/hooks";
 import { IItem } from "@/types";
 import {
@@ -17,70 +17,83 @@ import {
 } from "@mui/joy";
 import { Icons } from "../Icons";
 
-export const Item: React.FC<IItem> = ({ name, address, contact }) => {
+export const formatItemId = (id: IItem["id"]) => `item-${id}`;
+
+export const Item: React.FC<IItem & { isHighlighted: boolean }> = ({
+  id,
+  name,
+  address,
+  contact,
+  googleUrl,
+
+  isHighlighted,
+}) => {
   const { t } = useTranslations();
 
   return (
-    <Card variant="outlined" sx={{ p: 2, my: 2 }}>
-      <Typography level="h3">{name}</Typography>
+    <div id={formatItemId(id)}>
+      <Card variant={isHighlighted ? "solid" : "outlined"} sx={{ p: 2, my: 2 }}>
+        <Typography level="h3">{name}</Typography>
 
-      <Box>
-        <Typography>{address.street}</Typography>
-        <Typography>{address.district}</Typography>
+        <Box>
+          <Typography>{address.street}</Typography>
+          <Typography>{address.district}</Typography>
 
-        {address.note && (
-          <Typography level="body-sm">({address.note})</Typography>
-        )}
-      </Box>
+          {address.note && (
+            <Typography level="body-sm">({address.note})</Typography>
+          )}
+        </Box>
 
-      <Stack direction="row" spacing={1}>
-        <Button
-          component="a"
-          href={getMapUrl(address)}
-          startDecorator={<Icons.Navigation />}
-        >
-          {t("address.navigate")}
-        </Button>
-
-        <Dropdown>
-          <MenuButton variant="solid" startDecorator={<Icons.Phone />}>
-            {t("contact.phoneNumber")}
-          </MenuButton>
-
-          <Menu>
-            {contact.phoneNumbers.map((phoneNumber) => (
-              <MenuItem key={phoneNumber}>
-                <Link
-                  href={formatPhoneNumberHref(phoneNumber)}
-                  underline="none"
-                >
-                  {formatPhoneNumber(phoneNumber)}
-                </Link>
-              </MenuItem>
-            ))}
-          </Menu>
-        </Dropdown>
-
-        {contact.emailAddress && (
+        <Stack direction="row" spacing={1}>
           <Button
             component="a"
-            href={`mailto:${contact.emailAddress}`}
-            startDecorator={<Icons.Mail />}
+            href={googleUrl}
+            target="_blank"
+            startDecorator={<Icons.Navigation />}
           >
-            {t("contact.emailAddress")}
+            {t("address.navigate")}
           </Button>
-        )}
 
-        {contact.url && (
-          <Button
-            component="a"
-            href={contact.url}
-            startDecorator={<Icons.Web />}
-          >
-            {t("contact.url")}
-          </Button>
-        )}
-      </Stack>
-    </Card>
+          <Dropdown>
+            <MenuButton variant="solid" startDecorator={<Icons.Phone />}>
+              {t("contact.phoneNumber")}
+            </MenuButton>
+
+            <Menu>
+              {contact.phoneNumbers.map((phoneNumber) => (
+                <MenuItem key={phoneNumber}>
+                  <Link
+                    href={formatPhoneNumberHref(phoneNumber)}
+                    underline="none"
+                  >
+                    {formatPhoneNumber(phoneNumber)}
+                  </Link>
+                </MenuItem>
+              ))}
+            </Menu>
+          </Dropdown>
+
+          {contact.emailAddress && (
+            <Button
+              component="a"
+              href={`mailto:${contact.emailAddress}`}
+              startDecorator={<Icons.Mail />}
+            >
+              {t("contact.emailAddress")}
+            </Button>
+          )}
+
+          {contact.url && (
+            <Button
+              component="a"
+              href={contact.url}
+              startDecorator={<Icons.Web />}
+            >
+              {t("contact.url")}
+            </Button>
+          )}
+        </Stack>
+      </Card>
+    </div>
   );
 };

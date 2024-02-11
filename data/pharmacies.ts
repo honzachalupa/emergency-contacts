@@ -2,7 +2,8 @@ import { IItem } from "@/types";
 
 const items: IItem[] = [
   {
-    type: "pharmacy",
+    id: 201,
+    category: "pharmacy",
     name: "Lékárna Na Františku",
     address: {
       street: "Na Františku 847/8",
@@ -12,11 +13,14 @@ const items: IItem[] = [
     contact: {
       phoneNumbers: [222801397],
     },
+    coordinates: [50.092885283175825, 14.421454427041075],
+    googleUrl: "https://maps.app.goo.gl/auLbs9BCr8ajLYNt5",
   },
 
   {
-    type: "pharmacy",
-    name: "Lékárna U sv. Ludmily",
+    id: 202,
+    category: "pharmacy",
+    name: "Lékárna U svaté Ludmily",
     address: {
       street: "Belgická 37",
       district: "Praha 2",
@@ -25,10 +29,13 @@ const items: IItem[] = [
     contact: {
       phoneNumbers: [222513396],
     },
+    coordinates: [50.07432557152274, 14.435317140533208],
+    googleUrl: "https://maps.app.goo.gl/HLJyHQ3wfvUZydHPA",
   },
 
   {
-    type: "pharmacy",
+    id: 203,
+    category: "pharmacy",
     name: "Lékárna Thomayerova nemocnice",
     address: {
       street: "Vídeňská 800",
@@ -38,10 +45,13 @@ const items: IItem[] = [
     contact: {
       phoneNumbers: [261084019],
     },
+    coordinates: [50.03084464263791, 14.45631679820307],
+    googleUrl: "https://maps.app.goo.gl/YXiLompupHixajJX8",
   },
 
   {
-    type: "pharmacy",
+    id: 204,
+    category: "pharmacy",
     name: "Lékárna Motol",
     address: {
       street: "U Úvalu 84",
@@ -51,23 +61,13 @@ const items: IItem[] = [
     contact: {
       phoneNumbers: [224435736],
     },
+    coordinates: [50.07419451512776, 14.340999396354682],
+    googleUrl: "https://maps.app.goo.gl/PLZVM4Tpjtjs5oo2A",
   },
 
   {
-    type: "pharmacy",
-    name: "Lékárna Berytos",
-    address: {
-      street: "Vítězné náměstí 997/13",
-      district: "Praha 6",
-      city: "Praha",
-    },
-    contact: {
-      phoneNumbers: [224325520],
-    },
-  },
-
-  {
-    type: "pharmacy",
+    id: 205,
+    category: "pharmacy",
     name: "Lékárna Benu",
     address: {
       street: "Františka Křížka 22",
@@ -77,10 +77,13 @@ const items: IItem[] = [
     contact: {
       phoneNumbers: [230233910],
     },
+    coordinates: [50.09950876374047, 14.430609720893035],
+    googleUrl: "https://maps.app.goo.gl/KAreYSRb3VSCVaZ98",
   },
 
   {
-    type: "pharmacy",
+    id: 206,
+    category: "pharmacy",
     name: "Lékárna Malešice",
     address: {
       street: "Plaňanská 753/1",
@@ -90,10 +93,13 @@ const items: IItem[] = [
     contact: {
       phoneNumbers: [281019258],
     },
+    coordinates: [50.080235529349665, 14.501360637604256],
+    googleUrl: "https://maps.app.goo.gl/du68on8L9i95vmGa7",
   },
 
   {
-    type: "pharmacy",
+    id: 207,
+    category: "pharmacy",
     name: "Lékárna Šustova",
     address: {
       street: "Šustova 1930/2",
@@ -103,6 +109,8 @@ const items: IItem[] = [
     contact: {
       phoneNumbers: [271913307],
     },
+    coordinates: [50.02815793348571, 14.489909055874504],
+    googleUrl: "https://maps.app.goo.gl/fxopieL9zRTi58hD7",
   },
 ];
 
