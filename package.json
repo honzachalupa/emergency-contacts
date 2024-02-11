@@ -3,11 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "next dev && create-ads-txt",
+    "build": "next build && create-ads-txt",
     "start": "next start",
-    "lint": "next lint",
-    "create-ads-txt": "create-ads-txt"
+    "lint": "next lint"
   },
   "dependencies": {
     "@emotion/react": "^11.11.3",
