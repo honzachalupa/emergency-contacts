@@ -11,6 +11,7 @@ type KeyType =
   | "common.vet"
   | "common.vets"
   | "address.address"
+  | "address.district"
   | "address.navigate"
   | "address.note"
   | "contact.phoneNumber"
@@ -44,6 +45,7 @@ const translations: Translations = {
     "common.vet": "Veterinární pohotovost",
     "common.vets": "Veterinární pohotovosti",
     "address.address": "Adresa",
+    "address.district": "Městská část",
     "address.navigate": "Navigovat",
     "address.note": "Note",
     "contact.phoneNumber": "Zavolat",
@@ -60,6 +62,7 @@ const translations: Translations = {
     "common.vet": "Nonstop Vet",
     "common.vets": "Nonstop Vets",
     "address.address": "Address",
+    "address.district": "District",
     "address.navigate": "Navigate",
     "address.note": "Note",
     "contact.phoneNumber": "Call",

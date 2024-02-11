@@ -1,3 +1,5 @@
+"use client";
+
 import { formatPhoneNumber, formatPhoneNumberHref, getMapUrl } from "@/helpers";
 import { useTranslations } from "@/hooks";
 import { IItem } from "@/types";
@@ -20,11 +22,11 @@ export const Item: React.FC<IItem> = ({ name, address, contact }) => {
   const { t } = useTranslations();
 
   return (
-    <Card variant="outlined">
-      <li className="my-5">
+    <Card variant="outlined" sx={{ padding: 2, marginY: 2 }}>
+      <li>
         <Typography level="h3">{name}</Typography>
 
-        <ul>
+        <ul style={{ listStyle: "none", padding: 0 }}>
           <li>
             <Typography>{address.street}</Typography>
             <Typography>{address.district}</Typography>

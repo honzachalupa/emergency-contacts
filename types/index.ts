@@ -19,3 +19,9 @@ export interface IItem {
   address: IAddress;
   contact: IContact;
 }
+
+export interface IItemsGroup {
+  id: TItemType;
+  label: string;
+  items: IItem[];
+}
