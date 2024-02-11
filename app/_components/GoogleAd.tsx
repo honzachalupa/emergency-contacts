@@ -6,7 +6,7 @@ export const InitializeGoogleAdSense: React.FC = () => (
 
 export const GoogleAd: React.FC = () => (
   <div>
-    Reklama
+    HERE
     <AdUnit slotId="2352578397" layout="in-article" />
   </div>
 );

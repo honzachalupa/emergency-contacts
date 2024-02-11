@@ -7,15 +7,13 @@ export default function Home({ params: { lang } }: any) {
   const { t } = useTranslations();
 
   return (
-    <main>
-      <Box sx={{ p: 2 }}>
-        <Typography level="h1">{t("app.name")}</Typography>
-        <Typography>{t("app.description")}</Typography>
+    <Box component="main" sx={{ p: 2 }}>
+      <Typography level="h1">{t("app.name")}</Typography>
+      <Typography>{t("app.description")}</Typography>
 
-        <IZS />
+      <IZS />
 
-        <ItemsList />
-      </Box>
-    </main>
+      <ItemsList />
+    </Box>
   );
 }

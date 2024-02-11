@@ -27,11 +27,11 @@ export const Item: React.FC<IItem> = ({ name, address, contact }) => {
       <Box>
         <Typography>{address.street}</Typography>
         <Typography>{address.district}</Typography>
-      </Box>
 
-      {address.note && (
-        <Typography level="body-sm">({address.note})</Typography>
-      )}
+        {address.note && (
+          <Typography level="body-sm">({address.note})</Typography>
+        )}
+      </Box>
 
       <Stack direction="row" spacing={1}>
         <Button
