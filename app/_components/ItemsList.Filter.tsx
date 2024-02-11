@@ -13,7 +13,7 @@ import {
   Typography,
 } from "@mui/joy";
 import { useEffect, useState } from "react";
-import { Icons } from "../Icons";
+import { Icons } from "./Icons";
 
 interface IProps {
   groups: IItemsGroup[];

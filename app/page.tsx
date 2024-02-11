@@ -9,8 +9,7 @@ import { IZS } from "./_components/IZS";
 import { IItemsListRef, ItemsList } from "./_components/ItemsList";
 import { IMarker, Map } from "./_components/Map";
 
-const markers: IMarker[] = data.map(({ id, name, category, coordinates }) => ({
-  id,
+const markers: IMarker[] = data.map(({ name, category, coordinates }) => ({
   category,
   name,
   coordinates,
@@ -28,7 +27,7 @@ export default function Home({ params: { lang } }: any) {
 
       <Map
         markers={markers}
-        onMarkerClick={(id) => listRef.current?.focusItem(id)}
+        onMarkerClick={(name) => listRef.current?.focusItem(name!)}
       />
 
       <Drawer

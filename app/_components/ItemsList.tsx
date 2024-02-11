@@ -5,22 +5,22 @@ import { useTranslations } from "@/hooks";
 import { IItem, IItemsGroup } from "@/types";
 import { Button, Sheet, Typography } from "@mui/joy";
 import { forwardRef, useImperativeHandle, useState } from "react";
-import data from "../../../data";
-import { Icons } from "../Icons";
-import { Filter, TFilter, initialFilter } from "./Filter";
-import { Item, formatItemId } from "./Item";
-
-type FocusItemIdType = IItem["id"] | null;
+import data from "../../data";
+import { Icons } from "./Icons";
+import { Filter, TFilter, initialFilter } from "./ItemsList.Filter";
+import { Item, formatItemHtmlId } from "./ItemsList.Item";
 
 export interface IItemsListRef {
-  focusItem: (id: FocusItemIdType) => void;
+  focusItem: (name: IItem["name"] | null) => void;
 }
 
 export const ItemsList = forwardRef<IItemsListRef, unknown>((_, ref) => {
   const { t } = useTranslations();
 
   const [filter, setFilter] = useState<TFilter>(initialFilter);
-  const [selectedItemId, setSelectedItemId] = useState<FocusItemIdType>(null);
+  const [selectedItemName, setSelectedItemName] = useState<
+    IItem["name"] | null
+  >(null);
 
   const groups: IItemsGroup[] = [
     {
@@ -50,12 +50,12 @@ export const ItemsList = forwardRef<IItemsListRef, unknown>((_, ref) => {
         )
       : items;
 
-  const focusItem = (id: FocusItemIdType) => {
-    setSelectedItemId(id);
+  const focusItem = (name: IItem["name"] | null) => {
+    setSelectedItemName(name);
 
-    if (id) {
+    if (name) {
       document
-        .getElementById(formatItemId(id))
+        .getElementById(formatItemHtmlId(name))
         ?.scrollIntoView({ behavior: "smooth" });
     }
   };
@@ -63,7 +63,7 @@ export const ItemsList = forwardRef<IItemsListRef, unknown>((_, ref) => {
   useImperativeHandle(
     ref,
     (): IItemsListRef => ({
-      focusItem: (id: FocusItemIdType) => focusItem(id),
+      focusItem: (name: IItem["name"] | null) => focusItem(name),
     })
   );
 
@@ -79,18 +79,13 @@ export const ItemsList = forwardRef<IItemsListRef, unknown>((_, ref) => {
         );
 
         return (
-          <Sheet
-            key={id}
-            variant="outlined"
-            component="section"
-            sx={{ p: 2, mb: 2 }}
-          >
+          <Sheet key={id} component="section" sx={{ mb: 2 }}>
             <Typography level="h2">{label}</Typography>
 
             {filteredItems.map((item) => (
               <Item
-                key={item.id}
-                isHighlighted={selectedItemId === item.id}
+                key={item.name}
+                isHighlighted={selectedItemName === item.name}
                 {...item}
               />
             ))}

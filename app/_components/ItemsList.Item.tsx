@@ -15,12 +15,12 @@ import {
   Stack,
   Typography,
 } from "@mui/joy";
-import { Icons } from "../Icons";
+import { Icons } from "./Icons";
 
-export const formatItemId = (id: IItem["id"]) => `item-${id}`;
+export const formatItemHtmlId = (name: IItem["name"]) =>
+  name.replace(/\s/, "-");
 
 export const Item: React.FC<IItem & { isHighlighted: boolean }> = ({
-  id,
   name,
   address,
   contact,
@@ -31,7 +31,7 @@ export const Item: React.FC<IItem & { isHighlighted: boolean }> = ({
   const { t } = useTranslations();
 
   return (
-    <div id={formatItemId(id)}>
+    <div id={formatItemHtmlId(name)}>
       <Card variant={isHighlighted ? "solid" : "outlined"} sx={{ p: 2, my: 2 }}>
         <Typography level="h3">{name}</Typography>
 
@@ -87,6 +87,7 @@ export const Item: React.FC<IItem & { isHighlighted: boolean }> = ({
             <Button
               component="a"
               href={contact.url}
+              target="_blank"
               startDecorator={<Icons.Web />}
             >
               {t("contact.url")}

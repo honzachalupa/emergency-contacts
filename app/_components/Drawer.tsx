@@ -1,3 +1,4 @@
+import { useIsMobile } from "@/hooks/useIsMobile";
 import {
   DialogContent,
   DialogTitle,
@@ -8,53 +9,52 @@ import {
 
 interface IProps {
   header: React.ReactNode;
-  anchor?: "top" | "right" | "bottom" | "left";
   children: React.ReactNode;
 }
 
-export const Drawer: React.FC<IProps> = ({
-  header,
-  anchor = "left",
-  children,
-}) => (
-  <JoyDrawer
-    size="md"
-    variant="plain"
-    anchor={anchor}
-    hideBackdrop
-    open
-    slotProps={{
-      root: {
-        sx: {
-          pointerEvents: "none",
+export const Drawer: React.FC<IProps> = ({ header, children }) => {
+  const isMobile = useIsMobile();
+
+  return (
+    <JoyDrawer
+      size="md"
+      variant="plain"
+      anchor={isMobile ? "bottom" : "left"}
+      hideBackdrop
+      open
+      slotProps={{
+        root: {
+          sx: {
+            pointerEvents: "none",
+          },
         },
-      },
-      content: {
-        sx: {
-          bgcolor: "transparent",
-          p: { md: 2, sm: 0 },
-          boxShadow: "none",
-          pointerEvents: "all",
+        content: {
+          sx: {
+            bgcolor: "transparent",
+            p: { md: 2, xs: 1 },
+            boxShadow: "none",
+            pointerEvents: "all",
+          },
         },
-      },
-    }}
-  >
-    <Sheet
-      sx={{
-        borderRadius: "md",
-        p: 2,
-        display: "flex",
-        flexDirection: "column",
-        gap: 2,
-        height: "100%",
-        overflow: "auto",
       }}
     >
-      <DialogTitle>{header}</DialogTitle>
+      <Sheet
+        sx={{
+          borderRadius: "md",
+          p: 2,
+          display: "flex",
+          flexDirection: "column",
+          gap: 2,
+          height: "100%",
+          overflow: "auto",
+        }}
+      >
+        <DialogTitle>{header}</DialogTitle>
 
-      <Divider sx={{ mt: "auto" }} />
+        <Divider sx={{ mt: "auto" }} />
 
-      <DialogContent sx={{ gap: 2 }}>{children}</DialogContent>
-    </Sheet>
-  </JoyDrawer>
-);
+        <DialogContent sx={{ gap: 2 }}>{children}</DialogContent>
+      </Sheet>
+    </JoyDrawer>
+  );
+};

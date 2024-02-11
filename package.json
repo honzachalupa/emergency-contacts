@@ -17,7 +17,8 @@
     "next": "14.1.0",
     "next-google-adsense": "^1.0.6",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "react-use": "^17.5.0"
   },
   "devDependencies": {
     "@types/node": "^20",
