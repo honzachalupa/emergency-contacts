@@ -3,95 +3,84 @@
 import { formatPhoneNumber, formatPhoneNumberHref, getMapUrl } from "@/helpers";
 import { useTranslations } from "@/hooks";
 import { IItem } from "@/types";
-import MailIcon from "@mui/icons-material/Mail";
-import NavigationIcon from "@mui/icons-material/Navigation";
-import PhoneIcon from "@mui/icons-material/Phone";
-import WebIcon from "@mui/icons-material/Web";
 import {
+  Box,
   Button,
   Card,
-  Divider,
   Dropdown,
+  Link,
   Menu,
   MenuButton,
   MenuItem,
+  Stack,
   Typography,
 } from "@mui/joy";
+import { Icons } from "../Icons";
 
 export const Item: React.FC<IItem> = ({ name, address, contact }) => {
   const { t } = useTranslations();
 
   return (
-    <Card variant="outlined" sx={{ padding: 2, marginY: 2 }}>
-      <li>
-        <Typography level="h3">{name}</Typography>
+    <Card variant="outlined" sx={{ p: 2, my: 2 }}>
+      <Typography level="h3">{name}</Typography>
 
-        <ul style={{ listStyle: "none", padding: 0 }}>
-          <li>
-            <Typography>{address.street}</Typography>
-            <Typography>{address.district}</Typography>
+      <Box>
+        <Typography>{address.street}</Typography>
+        <Typography>{address.district}</Typography>
+      </Box>
 
-            {address.note && (
-              <Typography level="body-sm">({address.note})</Typography>
-            )}
+      {address.note && (
+        <Typography level="body-sm">({address.note})</Typography>
+      )}
 
-            <Button
-              component="a"
-              href={getMapUrl(address)}
-              startDecorator={<NavigationIcon />}
-            >
-              {t("address.navigate")}
-            </Button>
-          </li>
+      <Stack direction="row" spacing={1}>
+        <Button
+          component="a"
+          href={getMapUrl(address)}
+          startDecorator={<Icons.Navigation />}
+        >
+          {t("address.navigate")}
+        </Button>
 
-          <Divider />
+        <Dropdown>
+          <MenuButton variant="solid" startDecorator={<Icons.Phone />}>
+            {t("contact.phoneNumber")}
+          </MenuButton>
 
-          <li>
-            <Dropdown>
-              <MenuButton variant="solid" startDecorator={<PhoneIcon />}>
-                {t("contact.phoneNumber")}
-              </MenuButton>
+          <Menu>
+            {contact.phoneNumbers.map((phoneNumber) => (
+              <MenuItem key={phoneNumber}>
+                <Link
+                  href={formatPhoneNumberHref(phoneNumber)}
+                  underline="none"
+                >
+                  {formatPhoneNumber(phoneNumber)}
+                </Link>
+              </MenuItem>
+            ))}
+          </Menu>
+        </Dropdown>
 
-              <Menu>
-                {contact.phoneNumbers.map((phoneNumber) => (
-                  <MenuItem key={phoneNumber}>
-                    <a
-                      href={formatPhoneNumberHref(phoneNumber)}
-                      className="underline"
-                    >
-                      {formatPhoneNumber(phoneNumber)}
-                    </a>
-                  </MenuItem>
-                ))}
-              </Menu>
-            </Dropdown>
-          </li>
+        {contact.emailAddress && (
+          <Button
+            component="a"
+            href={`mailto:${contact.emailAddress}`}
+            startDecorator={<Icons.Mail />}
+          >
+            {t("contact.emailAddress")}
+          </Button>
+        )}
 
-          {contact.emailAddress && (
-            <li>
-              <Button
-                component="a"
-                href={`mailto:${contact.emailAddress}`}
-                startDecorator={<MailIcon />}
-              >
-                {t("contact.emailAddress")}
-              </Button>
-            </li>
-          )}
-
-          {contact.url && (
-            <li>
-              <Button
-                component="a"
-                href={contact.url}
-                startDecorator={<WebIcon />}
-              >
-                {t("contact.url")}
-              </Button>
-            </li>
-          )}
-        </ul>
-      </li>
+        {contact.url && (
+          <Button
+            component="a"
+            href={contact.url}
+            startDecorator={<Icons.Web />}
+          >
+            {t("contact.url")}
+          </Button>
+        )}
+      </Stack>
     </Card>
   );
 };

@@ -4,6 +4,7 @@ type KeyType =
   | "app.name"
   | "app.description"
   | "app.reportProblem"
+  | "app.supportEmailAddress"
   | "common.hospital"
   | "common.hospitals"
   | "common.pharmacy"
@@ -38,6 +39,7 @@ export const sharedTranslations = {
 const translations: Translations = {
   cs: {
     "app.reportProblem": "Nahlásit chybu",
+    "app.supportEmailAddress": "janchalupa@outlook.cz",
     "common.hospital": "Pohotovost",
     "common.hospitals": "Pohotovosti",
     "common.pharmacy": "Nonstop lékárna",
@@ -55,6 +57,7 @@ const translations: Translations = {
   },
   en: {
     "app.reportProblem": "Report a problem",
+    "app.supportEmailAddress": "janchalupa@outlook.cz",
     "common.hospital": "Emergency Room",
     "common.hospitals": "Emergency Rooms",
     "common.pharmacy": "Nonstop Pharmacy",

@@ -2,24 +2,18 @@
 
 import { alphanumericSorter } from "@/helpers";
 import { useTranslations } from "@/hooks";
-import { IItem, IItemsGroup, TItemType } from "@/types";
-import ReportProblemIcon from "@mui/icons-material/ReportProblem";
+import { IItem, IItemsGroup } from "@/types";
 import { Button, Sheet, Typography } from "@mui/joy";
 import { useState } from "react";
 import data from "../../../data";
-import { Filter } from "./Filter";
+import { Icons } from "../Icons";
+import { Filter, TFilter, initialFilter } from "./Filter";
 import { Item } from "./Item";
 
 export const ItemsList = () => {
   const { t } = useTranslations();
 
-  const [filter, setFilter] = useState<{
-    types: TItemType[];
-    district: string | null;
-  }>({
-    types: ["hospital", "pharmacy", "vet"],
-    district: "",
-  });
+  const [filter, setFilter] = useState<TFilter>(initialFilter);
 
   const groups: IItemsGroup[] = [
     {
@@ -60,19 +54,13 @@ export const ItemsList = () => {
         );
 
         return (
-          <Sheet
-            key={id}
-            variant="outlined"
-            sx={{ padding: 2, marginBottom: 2 }}
-          >
+          <Sheet key={id} variant="outlined" sx={{ p: 2, mb: 2 }}>
             <section>
               <Typography level="h2">{label}</Typography>
 
-              <ul style={{ listStyle: "none", padding: 0 }}>
-                {filteredItems.map((item) => (
-                  <Item key={item.name} {...item} />
-                ))}
-              </ul>
+              {filteredItems.map((item) => (
+                <Item key={item.name} {...item} />
+              ))}
             </section>
           </Sheet>
         );
@@ -82,10 +70,10 @@ export const ItemsList = () => {
 
       <Button
         component="a"
-        href={`mailto:janchalupa@outlook.cz`}
+        href={`mailto:${t("app.supportEmailAddress")}`}
         variant="outlined"
-        startDecorator={<ReportProblemIcon />}
-        sx={{ marginTop: 2 }}
+        startDecorator={<Icons.ReportProblem />}
+        sx={{ mt: 2 }}
       >
         {t("app.reportProblem")}
       </Button>

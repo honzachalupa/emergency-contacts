@@ -8,7 +8,7 @@ export default function Home({ params: { lang } }: any) {
 
   return (
     <main>
-      <Box sx={{ padding: 2 }}>
+      <Box sx={{ p: 2 }}>
         <Typography level="h1">{t("app.name")}</Typography>
         <Typography>{t("app.description")}</Typography>
 
