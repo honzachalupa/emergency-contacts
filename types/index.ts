@@ -19,7 +19,7 @@ export interface IItem {
   address: IAddress;
   contact: IContact;
   coordinates: [number, number];
-  googleUrl: string;
+  googleMapsUrl: string;
 }
 
 export interface IItemsGroup {

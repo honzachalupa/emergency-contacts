@@ -2,7 +2,6 @@ import { IItem } from "@/types";
 
 const items: IItem[] = [
   {
-    id: 201,
     category: "pharmacy",
     name: "Lékárna Na Františku",
     address: {
@@ -14,11 +13,10 @@ const items: IItem[] = [
       phoneNumbers: [222801397],
     },
     coordinates: [50.092885283175825, 14.421454427041075],
-    googleUrl: "https://maps.app.goo.gl/auLbs9BCr8ajLYNt5",
+    googleMapsUrl: "https://maps.app.goo.gl/auLbs9BCr8ajLYNt5",
   },
 
   {
-    id: 202,
     category: "pharmacy",
     name: "Lékárna U svaté Ludmily",
     address: {
@@ -30,11 +28,10 @@ const items: IItem[] = [
       phoneNumbers: [222513396],
     },
     coordinates: [50.07432557152274, 14.435317140533208],
-    googleUrl: "https://maps.app.goo.gl/HLJyHQ3wfvUZydHPA",
+    googleMapsUrl: "https://maps.app.goo.gl/HLJyHQ3wfvUZydHPA",
   },
 
   {
-    id: 203,
     category: "pharmacy",
     name: "Lékárna Thomayerova nemocnice",
     address: {
@@ -46,11 +43,10 @@ const items: IItem[] = [
       phoneNumbers: [261084019],
     },
     coordinates: [50.03084464263791, 14.45631679820307],
-    googleUrl: "https://maps.app.goo.gl/YXiLompupHixajJX8",
+    googleMapsUrl: "https://maps.app.goo.gl/YXiLompupHixajJX8",
   },
 
   {
-    id: 204,
     category: "pharmacy",
     name: "Lékárna Motol",
     address: {
@@ -62,11 +58,10 @@ const items: IItem[] = [
       phoneNumbers: [224435736],
     },
     coordinates: [50.07419451512776, 14.340999396354682],
-    googleUrl: "https://maps.app.goo.gl/PLZVM4Tpjtjs5oo2A",
+    googleMapsUrl: "https://maps.app.goo.gl/PLZVM4Tpjtjs5oo2A",
   },
 
   {
-    id: 205,
     category: "pharmacy",
     name: "Lékárna Benu",
     address: {
@@ -78,11 +73,10 @@ const items: IItem[] = [
       phoneNumbers: [230233910],
     },
     coordinates: [50.09950876374047, 14.430609720893035],
-    googleUrl: "https://maps.app.goo.gl/KAreYSRb3VSCVaZ98",
+    googleMapsUrl: "https://maps.app.goo.gl/KAreYSRb3VSCVaZ98",
   },
 
   {
-    id: 206,
     category: "pharmacy",
     name: "Lékárna Malešice",
     address: {
@@ -94,11 +88,10 @@ const items: IItem[] = [
       phoneNumbers: [281019258],
     },
     coordinates: [50.080235529349665, 14.501360637604256],
-    googleUrl: "https://maps.app.goo.gl/du68on8L9i95vmGa7",
+    googleMapsUrl: "https://maps.app.goo.gl/du68on8L9i95vmGa7",
   },
 
   {
-    id: 207,
     category: "pharmacy",
     name: "Lékárna Šustova",
     address: {
@@ -110,7 +103,7 @@ const items: IItem[] = [
       phoneNumbers: [271913307],
     },
     coordinates: [50.02815793348571, 14.489909055874504],
-    googleUrl: "https://maps.app.goo.gl/fxopieL9zRTi58hD7",
+    googleMapsUrl: "https://maps.app.goo.gl/fxopieL9zRTi58hD7",
   },
 ];
 

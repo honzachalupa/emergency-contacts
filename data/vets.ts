@@ -2,7 +2,6 @@ import { IItem } from "@/types";
 
 const items: IItem[] = [
   {
-    id: 301,
     category: "vet",
     name: "Veterinární pohotovost Duchek",
     address: {
@@ -16,11 +15,10 @@ const items: IItem[] = [
       url: "https://www.vetcentrum.cz/nem/pohotovost",
     },
     coordinates: [50.05716590517126, 14.323807131936238],
-    googleUrl: "https://maps.app.goo.gl/QbHrsPjHhHTiJa4X9",
+    googleMapsUrl: "https://maps.app.goo.gl/QbHrsPjHhHTiJa4X9",
   },
 
   {
-    id: 302,
     category: "vet",
     name: "Veterinární pohotovost Erika",
     address: {
@@ -33,11 +31,10 @@ const items: IItem[] = [
       url: "http://vet-klin-erika.cz",
     },
     coordinates: [50.106510136458645, 14.475127327041552],
-    googleUrl: "https://maps.app.goo.gl/ypTp8qGipMk59fHg6",
+    googleMapsUrl: "https://maps.app.goo.gl/ypTp8qGipMk59fHg6",
   },
 
   {
-    id: 303,
     category: "vet",
     name: "Veterinární pohotovost AA Vet",
     address: {
@@ -51,11 +48,10 @@ const items: IItem[] = [
       url: "https://www.aavet.cz/pohotovost/",
     },
     coordinates: [50.02438445554914, 14.521309215220395],
-    googleUrl: "https://maps.app.goo.gl/oK4zcM5Zspo8UqHi6",
+    googleMapsUrl: "https://maps.app.goo.gl/oK4zcM5Zspo8UqHi6",
   },
 
   {
-    id: 304,
     category: "vet",
     name: "Veterinární pohotovost IVET",
     address: {
@@ -69,7 +65,7 @@ const items: IItem[] = [
       url: "https://veterinarniklinikapraha.cz/",
     },
     coordinates: [50.01573755394979, 14.446284610471366],
-    googleUrl: "https://maps.app.goo.gl/jSqEmhign2uQTFhv8",
+    googleMapsUrl: "https://maps.app.goo.gl/jSqEmhign2uQTFhv8",
   },
 ];
 

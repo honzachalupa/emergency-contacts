@@ -24,7 +24,7 @@ export const Item: React.FC<IItem & { isHighlighted: boolean }> = ({
   name,
   address,
   contact,
-  googleUrl,
+  googleMapsUrl,
 
   isHighlighted,
 }) => {
@@ -47,7 +47,7 @@ export const Item: React.FC<IItem & { isHighlighted: boolean }> = ({
         <Stack direction="row" spacing={1}>
           <Button
             component="a"
-            href={googleUrl}
+            href={googleMapsUrl}
             target="_blank"
             startDecorator={<Icons.Navigation />}
           >
