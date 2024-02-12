@@ -1,13 +1,22 @@
 "use client";
 
-import { useIsMobile } from "@/hooks/useIsMobile";
+import DataContext from "@/context/DataContext";
+import { useGeoLocation } from "@/hooks/useGeoLocation";
+import { useResponsive } from "@/hooks/useResponsive";
 import { TItemCategory } from "@/types";
+import { useColorScheme } from "@mui/joy";
 import {
   APIProvider,
   Map as GoogleMap,
   Marker,
 } from "@vis.gl/react-google-maps";
-import { useEffect, useState } from "react";
+import { useContext } from "react";
+import {
+  LAT_ALIGNMENT_DESKTOP,
+  LNG_ALIGNMENT_DESKTOP,
+  icons,
+  mapStyles,
+} from "./Map.helpers";
 
 export interface IMarker {
   category: TItemCategory;
@@ -16,49 +25,29 @@ export interface IMarker {
 }
 
 interface IProps {
-  markers: IMarker[];
   onMarkerClick?: (markerName: IMarker["name"] | null) => void;
 }
 
-const LAT_ALIGNMENT_DESKTOP = 0.05;
-const LNG_ALIGNMENT_DESKTOP = 0.08;
+export const Map: React.FC<IProps> = ({ onMarkerClick }) => {
+  const { systemMode: colorScheme } = useColorScheme();
+  const { isMobile } = useResponsive();
+  const currentLocation = useGeoLocation();
 
-const icons: {
-  [type in TItemCategory]: string;
-} = {
-  hospital: "https://cdn-icons-png.flaticon.com/64/10714/10714002.png",
-  vet: "https://cdn-icons-png.flaticon.com/64/10714/10714002.png",
-  pharmacy: "https://cdn-icons-png.flaticon.com/64/10714/10714001.png",
-};
+  const { items } = useContext(DataContext);
 
-export const Map: React.FC<IProps> = ({ markers, onMarkerClick }) => {
-  const isMobile = useIsMobile();
-
-  const [location, setLocation] = useState<{
-    lat: number;
-    lng: number;
-  } | null>();
-
-  useEffect(() => {
-    if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(
-        ({ coords: { latitude: lat, longitude: lng } }) => {
-          setLocation({
-            lat,
-            lng,
-          });
-        }
-      );
-    }
-  }, []);
+  const markers: IMarker[] = items.map(({ name, category, coordinates }) => ({
+    category,
+    name,
+    coordinates,
+  }));
 
   return (
     <APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY as string}>
-      {location && (
+      {currentLocation && (
         <GoogleMap
           defaultCenter={{
-            lat: location.lat - (isMobile ? LAT_ALIGNMENT_DESKTOP : 0),
-            lng: location.lng - (isMobile ? 0 : LNG_ALIGNMENT_DESKTOP),
+            lat: currentLocation.lat - (isMobile ? LAT_ALIGNMENT_DESKTOP : 0),
+            lng: currentLocation.lng - (isMobile ? 0 : LNG_ALIGNMENT_DESKTOP),
           }}
           defaultZoom={12}
           disableDefaultUI
@@ -69,9 +58,14 @@ export const Map: React.FC<IProps> = ({ markers, onMarkerClick }) => {
             top: 0,
             left: 0,
           }}
+          mapId={mapStyles[colorScheme || "light"]}
           onClick={() => onMarkerClick?.(null)}
         >
-          <Marker title="Moje poloha" position={location} clickable={false} />
+          <Marker
+            title="Moje poloha"
+            position={currentLocation}
+            clickable={false}
+          />
 
           {markers.map(({ name, category, coordinates }) => (
             <Marker
@@ -81,7 +75,9 @@ export const Map: React.FC<IProps> = ({ markers, onMarkerClick }) => {
                 lat: coordinates[0],
                 lng: coordinates[1],
               }}
-              icon={icons[category]}
+              icon={{
+                url: icons[category],
+              }}
               onClick={() => onMarkerClick?.(name)}
             />
           ))}

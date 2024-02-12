@@ -11,6 +11,7 @@ export type TTranslationKey =
   | "common.pharmacies"
   | "common.vet"
   | "common.vets"
+  | "common.distance"
   | "address.address"
   | "address.district"
   | "address.navigate"
@@ -46,6 +47,7 @@ const translations: Translations = {
     "common.pharmacies": "Nonstop lékárny",
     "common.vet": "Veterinární pohotovost",
     "common.vets": "Veterinární pohotovosti",
+    "common.distance": "Vzdálenost",
     "address.address": "Adresa",
     "address.district": "Městská část",
     "address.navigate": "Navigovat",
@@ -64,6 +66,7 @@ const translations: Translations = {
     "common.pharmacies": "Nonstop Pharmacies",
     "common.vet": "Nonstop Vet",
     "common.vets": "Nonstop Vets",
+    "common.distance": "Distance",
     "address.address": "Address",
     "address.district": "District",
     "address.navigate": "Navigate",

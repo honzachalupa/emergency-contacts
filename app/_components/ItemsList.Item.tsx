@@ -2,13 +2,15 @@
 
 import { formatPhoneNumber, formatPhoneNumberHref } from "@/helpers";
 import { useTranslations } from "@/hooks";
-import { IItem, categories } from "@/types";
+import { useResponsive } from "@/hooks/useResponsive";
+import { IItem, IItemWithDistance, categories } from "@/types";
 import {
   Box,
   Button,
   Card,
   Chip,
   Dropdown,
+  Grid,
   Link,
   Menu,
   MenuButton,
@@ -21,25 +23,39 @@ import { Icons } from "./Icons";
 export const formatItemHtmlId = (name: IItem["name"]) =>
   name.replace(/\s/, "-");
 
-export const Item: React.FC<IItem & { isHighlighted: boolean }> = ({
+export const Item: React.FC<IItemWithDistance & { isHighlighted: boolean }> = ({
   category,
   name,
   address,
   contact,
   googleMapsUrl,
+  distance,
 
   isHighlighted,
 }) => {
   const { t } = useTranslations();
+  const { isNarrowDrawer } = useResponsive();
 
   return (
     <div id={formatItemHtmlId(name)}>
       <Card variant={isHighlighted ? "solid" : "outlined"} sx={{ p: 2, my: 2 }}>
-        <Stack direction="row" alignItems="center" spacing={1}>
-          <Typography level="h3">{name}</Typography>
+        <Grid container spacing={1} alignItems="center">
+          <Grid>
+            <Typography level="h3">{name}</Typography>
+          </Grid>
 
-          <Chip>{t(categories[category])}</Chip>
-        </Stack>
+          <Grid>
+            <Stack direction="row">
+              <Chip>{t(categories[category])}</Chip>
+
+              {distance && (
+                <Chip>
+                  {t("common.distance")}: {distance} km
+                </Chip>
+              )}
+            </Stack>
+          </Grid>
+        </Grid>
 
         <Box>
           <Typography>{address.street}</Typography>

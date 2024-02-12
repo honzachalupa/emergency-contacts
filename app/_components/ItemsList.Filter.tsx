@@ -1,12 +1,11 @@
 "use client";
 
-import data from "@/data";
+import DataContext from "@/context/DataContext";
 import { alphanumericSorter, removeArrayDuplicates } from "@/helpers";
 import { useTranslations } from "@/hooks";
-import { useIsMobile } from "@/hooks/useIsMobile";
 import { TItemCategory, categories } from "@/types";
 import { Autocomplete, Button, Grid, Sheet, ToggleButtonGroup } from "@mui/joy";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Icons } from "./Icons";
 
 interface IProps {
@@ -25,7 +24,8 @@ export const initialFilter: TFilter = {
 
 export const Filter: React.FC<IProps> = ({ onChange }) => {
   const { t } = useTranslations();
-  const isMobile = useIsMobile();
+
+  const { items } = useContext(DataContext);
 
   const [filter_categories, setFilter_categories] = useState<
     TFilter["categories"]
@@ -35,7 +35,7 @@ export const Filter: React.FC<IProps> = ({ onChange }) => {
   );
 
   const districtOptions = removeArrayDuplicates(
-    data.map(({ address }) => address.district)
+    items.map(({ address }) => address.district)
   ).sort(alphanumericSorter);
 
   const handleTypeChange = (id: TItemCategory) => {
@@ -70,8 +70,6 @@ export const Filter: React.FC<IProps> = ({ onChange }) => {
             buttonFlex="100%"
           >
             {Object.entries(categories).map(([id, translationKey]) => {
-              const items = data.filter(({ category }) => category === id);
-
               const icon = filter_categories.includes(id as any) ? (
                 <Icons.CheckBox />
               ) : (

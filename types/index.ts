@@ -38,7 +38,16 @@ export interface IItem {
   googleMapsUrl: string;
 }
 
+export interface IItemWithDistance extends IItem {
+  distance: number;
+}
+
 export interface IItemsGroup {
   id: TItemCategory;
   label: string;
+}
+
+export interface ICoordinates {
+  lat: number;
+  lng: number;
 }

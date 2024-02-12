@@ -1,7 +1,7 @@
 import { sharedTranslations } from "@/hooks";
+import { CssVarsProvider } from "@mui/joy";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { ThemeRegistry } from "./ThemeRegistry";
 import { InitializeGoogleAdSense } from "./_components/GoogleAd";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -15,15 +15,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang={language}>
       <InitializeGoogleAdSense />
 
       <body className={inter.className}>
-        <ThemeRegistry options={{ key: "joy" }}>{children}</ThemeRegistry>
+        <CssVarsProvider defaultMode="light">{children}</CssVarsProvider>
       </body>
     </html>
   );

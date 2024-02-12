@@ -18,48 +18,46 @@ export const Drawer: React.FC<IProps> = ({
   fill,
   header,
   children,
-}) => {
-  return (
-    <JoyDrawer
-      size="md"
-      variant="plain"
-      anchor={anchor}
-      hideBackdrop
-      open
-      slotProps={{
-        root: {
-          sx: {
-            pointerEvents: "none",
-          },
+}) => (
+  <JoyDrawer
+    size="md"
+    variant="plain"
+    anchor={anchor}
+    hideBackdrop
+    open
+    slotProps={{
+      root: {
+        sx: {
+          pointerEvents: "none",
         },
-        content: {
-          sx: {
-            bgcolor: "transparent",
-            p: { md: 2, xs: 1 },
-            boxShadow: "none",
-            pointerEvents: "all",
-          },
+      },
+      content: {
+        sx: {
+          bgcolor: "transparent",
+          p: { md: 2, xs: 1 },
+          boxShadow: "none",
+          pointerEvents: "all",
         },
+      },
+    }}
+  >
+    <Sheet
+      sx={{
+        borderRadius: "md",
+        p: 2,
+        height: fill ? "100%" : "auto",
+        overflowY: "auto",
       }}
     >
-      <Sheet
-        sx={{
-          borderRadius: "md",
-          p: 2,
-          height: fill ? "100%" : "auto",
-          overflowY: "auto",
-        }}
-      >
-        {header && (
-          <>
-            <DialogTitle>{header}</DialogTitle>
+      {header && (
+        <>
+          <DialogTitle sx={{ mb: 2 }}>{header}</DialogTitle>
 
-            <Divider sx={{ mt: "auto" }} />
-          </>
-        )}
+          <Divider sx={{ mt: "auto" }} />
+        </>
+      )}
 
-        <DialogContent sx={{ gap: 2 }}>{children}</DialogContent>
-      </Sheet>
-    </JoyDrawer>
-  );
-};
+      <DialogContent sx={{ gap: 2 }}>{children}</DialogContent>
+    </Sheet>
+  </JoyDrawer>
+);

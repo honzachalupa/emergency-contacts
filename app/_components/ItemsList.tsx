@@ -1,10 +1,10 @@
 "use client";
 
+import DataContext from "@/context/DataContext";
 import { useTranslations } from "@/hooks";
 import { IItem } from "@/types";
 import { Button, Typography } from "@mui/joy";
-import { forwardRef, useImperativeHandle, useState } from "react";
-import data from "../../data";
+import { forwardRef, useContext, useImperativeHandle, useState } from "react";
 import { Icons } from "./Icons";
 import { Filter, TFilter, initialFilter } from "./ItemsList.Filter";
 import { Item, formatItemHtmlId } from "./ItemsList.Item";
@@ -16,12 +16,14 @@ export interface IItemsListRef {
 export const ItemsList = forwardRef<IItemsListRef, unknown>((_, ref) => {
   const { t } = useTranslations();
 
+  const { items } = useContext(DataContext);
+
   const [filter, setFilter] = useState<TFilter>(initialFilter);
   const [selectedItemName, setSelectedItemName] = useState<
     IItem["name"] | null
   >(null);
 
-  const filteredItems = data.filter(
+  const filteredItems = items.filter(
     ({ category, address }) =>
       filter.categories.includes(category) &&
       (!filter.district ||
