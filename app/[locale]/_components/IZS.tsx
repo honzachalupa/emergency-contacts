@@ -1,15 +1,17 @@
 import DataContext from "@/context/DataContext";
-import { Box, Button, Grid, Typography } from "@mui/joy";
+import { Button, Card, Grid, Typography } from "@mui/joy";
+import { useTranslations } from "next-intl";
 import { useContext } from "react";
 import { Icons } from "./Icons";
 
 export const IZS: React.FC = () => {
   const { izsItems } = useContext(DataContext);
+  const t = useTranslations();
 
   return (
-    <Box>
-      <Typography level="title-md" sx={{ pb: 1 }}>
-        Kontakty IZS
+    <Card variant="outlined">
+      <Typography level="title-md" sx={{ mt: -1 }}>
+        {t("common.izs")}
       </Typography>
 
       <Grid container columns={2} spacing={1} sx={{ flexGrow: 1 }}>
@@ -26,6 +28,6 @@ export const IZS: React.FC = () => {
           </Grid>
         ))}
       </Grid>
-    </Box>
+    </Card>
   );
 };

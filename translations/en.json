@@ -12,7 +12,8 @@
     "pharmacies": "Nonstop Pharmacies",
     "vet": "Nonstop Vet",
     "vets": "Nonstop Vets",
-    "distance": "Distance"
+    "distance": "Distance",
+    "izs": "Services"
   },
   "address": {
     "address": "Address",

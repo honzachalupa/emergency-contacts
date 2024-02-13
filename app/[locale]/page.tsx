@@ -22,10 +22,6 @@ export default function Home() {
       <Box component="main">
         <Map onMarkerClick={(name) => listRef.current?.focusItem(name!)} />
 
-        <Drawer anchor="right">
-          <IZS />
-        </Drawer>
-
         <Drawer
           anchor={isMobile ? "bottom" : "left"}
           fill
@@ -52,6 +48,7 @@ export default function Home() {
             </Grid>
           }
         >
+          <IZS />
           <ItemsList ref={listRef} />
         </Drawer>
       </Box>
