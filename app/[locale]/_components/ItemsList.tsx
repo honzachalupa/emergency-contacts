@@ -2,10 +2,9 @@
 
 import DataContext from "@/context/DataContext";
 import { IItem } from "@/types";
-import { Button, Typography } from "@mui/joy";
+import { Typography } from "@mui/joy";
 import { useTranslations } from "next-intl";
 import { forwardRef, useContext, useImperativeHandle, useState } from "react";
-import { Icons } from "./Icons";
 import { Filter, TFilter, initialFilter } from "./ItemsList.Filter";
 import { Item, formatItemHtmlId } from "./ItemsList.Item";
 
@@ -60,16 +59,6 @@ export const ItemsList = forwardRef<IItemsListRef, unknown>((_, ref) => {
       ))}
 
       {!filteredItems.length && <Typography>Upravte filtr</Typography>}
-
-      <Button
-        component="a"
-        href={`mailto:${t("app.supportEmailAddress")}`}
-        variant="outlined"
-        startDecorator={<Icons.ReportProblem />}
-        sx={{ mt: 2 }}
-      >
-        {t("app.reportProblem")}
-      </Button>
     </>
   );
 });

@@ -2,11 +2,12 @@
 
 import { DataProvider } from "@/context/DataContext";
 import { useResponsive } from "@/hooks";
-import { Box, Grid, Stack, Typography } from "@mui/joy";
+import { Box, Button, Grid, Stack, Typography } from "@mui/joy";
 import { useTranslations } from "next-intl";
 import { useRef } from "react";
 import { Drawer } from "./_components/Drawer";
 import { IZS } from "./_components/IZS";
+import { Icons } from "./_components/Icons";
 import { IItemsListRef, ItemsList } from "./_components/ItemsList";
 import { LanguageSelector } from "./_components/LanguageSelector";
 import { Map } from "./_components/Map";
@@ -49,7 +50,22 @@ export default function Home() {
           }
         >
           <IZS />
+
           <ItemsList ref={listRef} />
+
+          <Button
+            component="a"
+            href={`mailto:${t("app.supportEmailAddress")}`}
+            variant="outlined"
+            startDecorator={<Icons.ReportProblem />}
+            sx={{ mt: 2 }}
+          >
+            {t("app.reportProblem")}
+          </Button>
+
+          <Button component="a" variant="plain" href="https://janchalupa.dev/">
+            Jan Chalupa
+          </Button>
         </Drawer>
       </Box>
     </DataProvider>

@@ -57,7 +57,9 @@ export const Drawer: React.FC<IProps> = ({
         </>
       )}
 
-      <DialogContent sx={{ gap: 2 }}>{children}</DialogContent>
+      <DialogContent sx={{ gap: 2, overflowX: "hidden" }}>
+        {children}
+      </DialogContent>
     </Sheet>
   </JoyDrawer>
 );
