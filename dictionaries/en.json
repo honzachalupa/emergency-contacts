@@ -1,0 +1,20 @@
+{
+  "app.name": "Emergency Contacts",
+  "app.description": "Find the nearest emergency room, pharmacy, or vet.",
+  "app.reportProblem": "Report a problem",
+  "app.supportEmailAddress": "janchalupa@outlook.cz",
+  "common.hospital": "Emergency Room",
+  "common.hospitals": "Emergency Rooms",
+  "common.pharmacy": "Nonstop Pharmacy",
+  "common.pharmacies": "Nonstop Pharmacies",
+  "common.vet": "Nonstop Vet",
+  "common.vets": "Nonstop Vets",
+  "common.distance": "Distance",
+  "address.address": "Address",
+  "address.district": "District",
+  "address.navigate": "Navigate",
+  "address.note": "Note",
+  "contact.phoneNumber": "Call",
+  "contact.emailAddress": "E-mail",
+  "contact.url": "Website"
+}

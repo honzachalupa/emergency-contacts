@@ -1,8 +1,7 @@
 "use client";
 
 import { formatPhoneNumber, formatPhoneNumberHref } from "@/helpers";
-import { useTranslations } from "@/hooks";
-import { useResponsive } from "@/hooks/useResponsive";
+import { useResponsive, useTranslations } from "@/hooks";
 import { IItem, IItemWithDistance, categories } from "@/types";
 import {
   Box,
@@ -66,56 +65,64 @@ export const Item: React.FC<IItemWithDistance & { isHighlighted: boolean }> = ({
           )}
         </Box>
 
-        <Stack direction="row" spacing={1}>
-          <Button
-            component="a"
-            href={googleMapsUrl}
-            target="_blank"
-            startDecorator={<Icons.Navigation />}
-          >
-            {t("address.navigate")}
-          </Button>
-
-          <Dropdown>
-            <MenuButton variant="solid" startDecorator={<Icons.Phone />}>
-              {t("contact.phoneNumber")}
-            </MenuButton>
-
-            <Menu>
-              {contact.phoneNumbers.map((phoneNumber) => (
-                <MenuItem key={phoneNumber}>
-                  <Link
-                    href={formatPhoneNumberHref(phoneNumber)}
-                    underline="none"
-                  >
-                    {formatPhoneNumber(phoneNumber)}
-                  </Link>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Dropdown>
-
-          {contact.emailAddress && (
+        <Grid container direction="row" spacing={1}>
+          <Grid>
             <Button
               component="a"
-              href={`mailto:${contact.emailAddress}`}
-              startDecorator={<Icons.Mail />}
+              href={googleMapsUrl}
+              target="_blank"
+              startDecorator={<Icons.Navigation />}
             >
-              {t("contact.emailAddress")}
+              {t("address.navigate")}
             </Button>
+          </Grid>
+
+          <Grid>
+            <Dropdown>
+              <MenuButton variant="solid" startDecorator={<Icons.Phone />}>
+                {t("contact.phoneNumber")}
+              </MenuButton>
+
+              <Menu>
+                {contact.phoneNumbers.map((phoneNumber) => (
+                  <MenuItem key={phoneNumber}>
+                    <Link
+                      href={formatPhoneNumberHref(phoneNumber)}
+                      underline="none"
+                    >
+                      {formatPhoneNumber(phoneNumber)}
+                    </Link>
+                  </MenuItem>
+                ))}
+              </Menu>
+            </Dropdown>
+          </Grid>
+
+          {contact.emailAddress && (
+            <Grid>
+              <Button
+                component="a"
+                href={`mailto:${contact.emailAddress}`}
+                startDecorator={<Icons.Mail />}
+              >
+                {t("contact.emailAddress")}
+              </Button>
+            </Grid>
           )}
 
           {contact.url && (
-            <Button
-              component="a"
-              href={contact.url}
-              target="_blank"
-              startDecorator={<Icons.Web />}
-            >
-              {t("contact.url")}
-            </Button>
+            <Grid>
+              <Button
+                component="a"
+                href={contact.url}
+                target="_blank"
+                startDecorator={<Icons.Web />}
+              >
+                {t("contact.url")}
+              </Button>
+            </Grid>
           )}
-        </Stack>
+        </Grid>
       </Card>
     </div>
   );

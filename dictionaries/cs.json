@@ -1,0 +1,20 @@
+{
+  "app.name": "Pohotovostní kontakty",
+  "app.description": "Najděte nejbližší pohotovost, lékárnu nebo veterináře.",
+  "app.reportProblem": "Nahlásit chybu",
+  "app.supportEmailAddress": "janchalupa@outlook.cz",
+  "common.hospital": "Pohotovost",
+  "common.hospitals": "Pohotovosti",
+  "common.pharmacy": "Nonstop lékárna",
+  "common.pharmacies": "Nonstop lékárny",
+  "common.vet": "Veterinární pohotovost",
+  "common.vets": "Veterinární pohotovosti",
+  "common.distance": "Vzdálenost",
+  "address.address": "Adresa",
+  "address.district": "Městská část",
+  "address.navigate": "Navigovat",
+  "address.note": "Note",
+  "contact.phoneNumber": "Zavolat",
+  "contact.emailAddress": "Napsat e-mail",
+  "contact.url": "Web"
+}

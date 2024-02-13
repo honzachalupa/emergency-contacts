@@ -1,8 +1,7 @@
 "use client";
 
 import DataContext from "@/context/DataContext";
-import { useGeoLocation } from "@/hooks/useGeoLocation";
-import { useResponsive } from "@/hooks/useResponsive";
+import { useGeoLocation, useResponsive } from "@/hooks";
 import { TItemCategory } from "@/types";
 import { useColorScheme } from "@mui/joy";
 import {

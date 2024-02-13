@@ -1,5 +1,5 @@
 import { getDistanceBetweenTwoPoints } from "@/helpers/coordinates";
-import { useGeoLocation } from "@/hooks/useGeoLocation";
+import { useGeoLocation } from "@/hooks";
 import { IItemWithDistance } from "@/types";
 import React, { createContext, useEffect, useState } from "react";
 import data from "./data";

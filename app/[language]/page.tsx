@@ -1,17 +1,16 @@
 "use client";
 
 import { DataProvider } from "@/context/DataContext";
-import { useTranslations } from "@/hooks";
-import { useResponsive } from "@/hooks/useResponsive";
+import { useResponsive, useTranslations } from "@/hooks";
 import { Box, Stack, Typography } from "@mui/joy";
 import { useRef } from "react";
-import { Drawer } from "./_components/Drawer";
-import { IZS } from "./_components/IZS";
-import { IItemsListRef, ItemsList } from "./_components/ItemsList";
-import { Map } from "./_components/Map";
+import { Drawer } from "../_components/Drawer";
+import { IZS } from "../_components/IZS";
+import { IItemsListRef, ItemsList } from "../_components/ItemsList";
+import { Map } from "../_components/Map";
 
-export default function Home({ params: { lang } }: any) {
-  const { t } = useTranslations();
+export default function Home({ params: { language } }: any) {
+  const { t } = useTranslations(language);
   const { isMobile } = useResponsive();
 
   const listRef = useRef<IItemsListRef>(null);
