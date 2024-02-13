@@ -1,6 +1,7 @@
 import { CssVarsProvider } from "@mui/joy";
 import type { Metadata } from "next";
 import { NextIntlClientProvider, useMessages } from "next-intl";
+import { unstable_setRequestLocale } from "next-intl/server";
 import { Inter } from "next/font/google";
 import { locales } from "../i18n";
 import { InitializeGoogleAdSense } from "./_components/GoogleAd";
@@ -8,8 +9,8 @@ import { InitializeGoogleAdSense } from "./_components/GoogleAd";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: `sharedTranslations[defaultLanguage]["app.name"]`,
-  description: `sharedTranslations[defaultLanguage]["app.description"]`,
+  title: "Pohotovostní kontakty",
+  description: "Najděte nejbližší pohotovost, lékárnu nebo veterináře.",
 };
 
 export default function RootLayout({
@@ -19,6 +20,8 @@ export default function RootLayout({
   params: { locale: string };
   children: React.ReactNode;
 }) {
+  unstable_setRequestLocale(locale);
+
   const messages = useMessages();
 
   return (
