@@ -1,7 +1,6 @@
 "use client";
 
 import { formatPhoneNumber, formatPhoneNumberHref } from "@/helpers";
-import { useResponsive } from "@/hooks";
 import { IItem, IItemWithDistance, categories } from "@/types";
 import {
   Box,
@@ -20,10 +19,12 @@ import {
 import { useTranslations } from "next-intl";
 import { Icons } from "./Icons";
 
+type IProps = IItemWithDistance & { isHighlighted: boolean };
+
 export const formatItemHtmlId = (name: IItem["name"]) =>
   name.replace(/\s/, "-");
 
-export const Item: React.FC<IItemWithDistance & { isHighlighted: boolean }> = ({
+export const Item: React.FC<IProps> = ({
   category,
   name,
   address,
@@ -34,7 +35,6 @@ export const Item: React.FC<IItemWithDistance & { isHighlighted: boolean }> = ({
   isHighlighted,
 }) => {
   const t = useTranslations();
-  const { isNarrowDrawer } = useResponsive();
 
   return (
     <div id={formatItemHtmlId(name)}>
@@ -84,7 +84,7 @@ export const Item: React.FC<IItemWithDistance & { isHighlighted: boolean }> = ({
                 {t("contact.phoneNumber")}
               </MenuButton>
 
-              <Menu>
+              <Menu disablePortal>
                 {contact.phoneNumbers.map((phoneNumber) => (
                   <MenuItem key={phoneNumber}>
                     <Link
