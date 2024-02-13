@@ -13,7 +13,11 @@
     "vet": "Veterinární pohotovost",
     "vets": "Veterinární pohotovosti",
     "distance": "Vzdálenost",
-    "izs": "Záchranné složky"
+    "izs": "Záchranné složky",
+    "emergency": "Záchranná služba",
+    "police": "Policie",
+    "municipalPolice": "Městská policie",
+    "firefighters": "Hasiči"
   },
   "address": {
     "address": "Adresa",

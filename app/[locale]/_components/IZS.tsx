@@ -15,15 +15,15 @@ export const IZS: React.FC = () => {
       </Typography>
 
       <Grid container columns={2} spacing={1} sx={{ flexGrow: 1 }}>
-        {izsItems.map(({ name, phoneNumber }) => (
-          <Grid key={name}>
+        {izsItems.map(({ name_tk, phoneNumber }) => (
+          <Grid key={name_tk}>
             <Button
               component="a"
               variant="soft"
               href={`tel:${phoneNumber}`}
               startDecorator={<Icons.Phone color="error" />}
             >
-              {name}
+              {t(name_tk)}
             </Button>
           </Grid>
         ))}

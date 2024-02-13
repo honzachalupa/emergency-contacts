@@ -13,7 +13,11 @@
     "vet": "Nonstop Vet",
     "vets": "Nonstop Vets",
     "distance": "Distance",
-    "izs": "Services"
+    "izs": "Services",
+    "emergency": "Emergency Service",
+    "police": "Police",
+    "municipalPolice": "Municipal Police",
+    "firefighters": "Fire Rescue Service"
   },
   "address": {
     "address": "Address",

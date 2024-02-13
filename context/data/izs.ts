@@ -1,18 +1,18 @@
 export const izs = [
   {
-    name: "Záchranná služba",
+    name_tk: "common.emergency",
     phoneNumber: 155,
   },
   {
-    name: "Policie ČR",
+    name_tk: "common.police",
     phoneNumber: 158,
   },
   {
-    name: "Městská policie",
+    name_tk: "common.municipalPolice",
     phoneNumber: 156,
   },
   {
-    name: "Hasiči",
+    name_tk: "common.firefighters",
     phoneNumber: 150,
   },
 ];

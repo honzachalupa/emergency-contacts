@@ -6,7 +6,7 @@ import data from "./data";
 import { izs } from "./data/izs";
 
 interface ContextState {
-  izsItems: { name: string; phoneNumber: number }[];
+  izsItems: { name_tk: string; phoneNumber: number }[];
   items: IItemWithDistance[];
 }
 
