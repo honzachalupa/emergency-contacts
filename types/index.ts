@@ -1,5 +1,3 @@
-import { TTranslationKey } from "../hooks";
-
 export enum EItemCategory {
   hospital = "hospital",
   vet = "vet",
@@ -9,7 +7,7 @@ export enum EItemCategory {
 export type TItemCategory = keyof typeof EItemCategory;
 
 export const categories: {
-  [key in TItemCategory]: TTranslationKey;
+  [key in TItemCategory]: string;
 } = {
   hospital: "common.hospital",
   pharmacy: "common.pharmacy",

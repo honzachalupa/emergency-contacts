@@ -9,7 +9,18 @@ export const LanguageSelector: React.FC = () => {
 
   const [isLoading, setIsLoading] = useState<string | null>();
 
-  const handleLanguageChange = (nextLocale: any) => {
+  const languages = [
+    {
+      locale: "cs",
+      label: "Česky",
+    },
+    {
+      locale: "en",
+      label: "English",
+    },
+  ];
+
+  const handleLanguageChange = (nextLocale: string) => {
     if (locale !== nextLocale) {
       setIsLoading(nextLocale);
 
@@ -20,21 +31,16 @@ export const LanguageSelector: React.FC = () => {
   return (
     <Stack direction="row" spacing={1}>
       <ToggleButtonGroup value={locale}>
-        <Button
-          value="cs"
-          loading={isLoading === "cs"}
-          onClick={() => handleLanguageChange("cs")}
-        >
-          Česky
-        </Button>
-
-        <Button
-          value="en"
-          loading={isLoading === "en"}
-          onClick={() => handleLanguageChange("en")}
-        >
-          English
-        </Button>
+        {languages.map(({ locale, label }) => (
+          <Button
+            key={locale}
+            value={locale}
+            loading={isLoading === locale}
+            onClick={() => handleLanguageChange(locale)}
+          >
+            {label}
+          </Button>
+        ))}
       </ToggleButtonGroup>
     </Stack>
   );

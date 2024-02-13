@@ -11,7 +11,7 @@ import { IItemsListRef, ItemsList } from "./_components/ItemsList";
 import { LanguageSelector } from "./_components/LanguageSelector";
 import { Map } from "./_components/Map";
 
-export default function Home({ params: { language } }: any) {
+export default function Home() {
   const t = useTranslations();
   const { isMobile } = useResponsive();
 
