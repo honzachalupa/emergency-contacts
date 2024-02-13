@@ -11,13 +11,12 @@
   "dependencies": {
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
-    "@formatjs/intl-localematcher": "^0.5.4",
     "@mui/icons-material": "^5.15.9",
     "@mui/joy": "^5.0.0-beta.27",
     "@vis.gl/react-google-maps": "^0.6.1",
-    "negotiator": "^0.6.3",
     "next": "14.1.0",
     "next-google-adsense": "^1.0.6",
+    "next-intl": "^3.7.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-use": "^17.5.0"

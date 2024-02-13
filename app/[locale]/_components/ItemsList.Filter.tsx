@@ -2,9 +2,9 @@
 
 import DataContext from "@/context/DataContext";
 import { alphanumericSorter, removeArrayDuplicates } from "@/helpers";
-import { useTranslations } from "@/hooks";
 import { TItemCategory, categories } from "@/types";
 import { Autocomplete, Button, Grid, Sheet, ToggleButtonGroup } from "@mui/joy";
+import { useTranslations } from "next-intl";
 import { useContext, useEffect, useState } from "react";
 import { Icons } from "./Icons";
 
@@ -23,7 +23,7 @@ export const initialFilter: TFilter = {
 };
 
 export const Filter: React.FC<IProps> = ({ onChange }) => {
-  const { t } = useTranslations();
+  const t = useTranslations();
 
   const { items } = useContext(DataContext);
 

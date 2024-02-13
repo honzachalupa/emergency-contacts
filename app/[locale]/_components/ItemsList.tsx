@@ -1,9 +1,9 @@
 "use client";
 
 import DataContext from "@/context/DataContext";
-import { useTranslations } from "@/hooks";
 import { IItem } from "@/types";
 import { Button, Typography } from "@mui/joy";
+import { useTranslations } from "next-intl";
 import { forwardRef, useContext, useImperativeHandle, useState } from "react";
 import { Icons } from "./Icons";
 import { Filter, TFilter, initialFilter } from "./ItemsList.Filter";
@@ -14,7 +14,7 @@ export interface IItemsListRef {
 }
 
 export const ItemsList = forwardRef<IItemsListRef, unknown>((_, ref) => {
-  const { t } = useTranslations();
+  const t = useTranslations();
 
   const { items } = useContext(DataContext);
 

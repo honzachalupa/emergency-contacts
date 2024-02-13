@@ -1,8 +1,9 @@
 import { CssVarsProvider } from "@mui/joy";
 import type { Metadata } from "next";
+import { NextIntlClientProvider, useMessages } from "next-intl";
 import { Inter } from "next/font/google";
-import { InitializeGoogleAdSense } from "../_components/GoogleAd";
-import { LanguageType, i18n } from "../i18n-config";
+import { locales } from "../i18n";
+import { InitializeGoogleAdSense } from "./_components/GoogleAd";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,26 +12,28 @@ export const metadata: Metadata = {
   description: `sharedTranslations[defaultLanguage]["app.description"]`,
 };
 
-export async function generateStaticParams() {
-  return i18n.locales.map((locale) => ({ lang: locale }));
-}
-
 export default function RootLayout({
-  params: { language },
+  params: { locale },
   children,
 }: {
-  params: { language: LanguageType };
+  params: { locale: string };
   children: React.ReactNode;
 }) {
-  console.log({ language });
+  const messages = useMessages();
 
   return (
-    <html lang={language}>
+    <html lang={locale}>
       <InitializeGoogleAdSense />
 
       <body className={inter.className}>
-        <CssVarsProvider defaultMode="light">{children}</CssVarsProvider>
+        <NextIntlClientProvider messages={messages}>
+          <CssVarsProvider defaultMode="light">{children}</CssVarsProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );
+}
+
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
 }

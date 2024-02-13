@@ -1,5 +1,6 @@
 export * from "./address";
 export * from "./contact";
+export * from "./navigation";
 
 export const removeArrayDuplicates = <T>(arr: T[]): T[] =>
   Array.from(new Set(arr));

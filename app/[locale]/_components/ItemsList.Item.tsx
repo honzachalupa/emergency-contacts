@@ -1,7 +1,7 @@
 "use client";
 
 import { formatPhoneNumber, formatPhoneNumberHref } from "@/helpers";
-import { useResponsive, useTranslations } from "@/hooks";
+import { useResponsive } from "@/hooks";
 import { IItem, IItemWithDistance, categories } from "@/types";
 import {
   Box,
@@ -17,6 +17,7 @@ import {
   Stack,
   Typography,
 } from "@mui/joy";
+import { useTranslations } from "next-intl";
 import { Icons } from "./Icons";
 
 export const formatItemHtmlId = (name: IItem["name"]) =>
@@ -32,7 +33,7 @@ export const Item: React.FC<IItemWithDistance & { isHighlighted: boolean }> = ({
 
   isHighlighted,
 }) => {
-  const { t } = useTranslations();
+  const t = useTranslations();
   const { isNarrowDrawer } = useResponsive();
 
   return (
