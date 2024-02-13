@@ -9,7 +9,7 @@ import { InitializeGoogleAdSense } from "./_components/GoogleAd";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Pohotovostní kontakty",
+  title: "Nouzové kontakty",
   description: "Najděte nejbližší pohotovost, lékárnu nebo veterináře.",
 };
 
