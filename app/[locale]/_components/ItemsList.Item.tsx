@@ -15,6 +15,7 @@ import {
   MenuItem,
   Stack,
   Typography,
+  useTheme,
 } from "@mui/joy";
 import { useTranslations } from "next-intl";
 import { Icons } from "./Icons";
@@ -35,6 +36,7 @@ export const Item: React.FC<IProps> = ({
   isHighlighted,
 }) => {
   const t = useTranslations();
+  const theme = useTheme();
 
   return (
     <div id={formatItemHtmlId(name)}>
@@ -78,27 +80,6 @@ export const Item: React.FC<IProps> = ({
             </Button>
           </Grid>
 
-          <Grid>
-            <Dropdown>
-              <MenuButton variant="solid" startDecorator={<Icons.Phone />}>
-                {t("contact.phoneNumber")}
-              </MenuButton>
-
-              <Menu disablePortal>
-                {contact.phoneNumbers.map((phoneNumber) => (
-                  <MenuItem key={phoneNumber}>
-                    <Link
-                      href={formatPhoneNumberHref(phoneNumber)}
-                      underline="none"
-                    >
-                      {formatPhoneNumber(phoneNumber)}
-                    </Link>
-                  </MenuItem>
-                ))}
-              </Menu>
-            </Dropdown>
-          </Grid>
-
           {contact.emailAddress && (
             <Grid>
               <Button
@@ -123,6 +104,27 @@ export const Item: React.FC<IProps> = ({
               </Button>
             </Grid>
           )}
+
+          <Grid>
+            <Dropdown>
+              <MenuButton variant="outlined" startDecorator={<Icons.Phone />}>
+                {t("contact.phoneNumber")}
+              </MenuButton>
+
+              <Menu disablePortal>
+                {contact.phoneNumbers.map((phoneNumber) => (
+                  <MenuItem key={phoneNumber}>
+                    <Link
+                      href={formatPhoneNumberHref(phoneNumber)}
+                      underline="none"
+                    >
+                      {formatPhoneNumber(phoneNumber)}
+                    </Link>
+                  </MenuItem>
+                ))}
+              </Menu>
+            </Dropdown>
+          </Grid>
         </Grid>
       </Card>
     </div>
