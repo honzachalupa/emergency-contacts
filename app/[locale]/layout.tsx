@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 import { NextIntlClientProvider, useMessages } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
 import { Inter } from "next/font/google";
+import { GoogleAnalytics } from "nextjs-google-analytics";
 import { locales } from "../i18n";
-import { InitializeGoogleAdSense } from "./_components/GoogleAd";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,7 +26,7 @@ export default function RootLayout({
 
   return (
     <html lang={locale}>
-      <InitializeGoogleAdSense />
+      <GoogleAnalytics trackPageViews />
 
       <body className={inter.className}>
         <NextIntlClientProvider messages={messages}>
