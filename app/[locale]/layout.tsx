@@ -1,4 +1,5 @@
 import { CssVarsProvider } from "@mui/joy";
+import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import { NextIntlClientProvider, useMessages } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
@@ -27,7 +28,11 @@ export default function RootLayout({
     <html lang={locale}>
       <body className={inter.className}>
         <NextIntlClientProvider messages={messages}>
-          <CssVarsProvider defaultMode="light">{children}</CssVarsProvider>
+          <CssVarsProvider defaultMode="light">
+            {children}
+
+            <Analytics />
+          </CssVarsProvider>
         </NextIntlClientProvider>
       </body>
     </html>
