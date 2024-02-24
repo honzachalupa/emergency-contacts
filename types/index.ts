@@ -28,6 +28,7 @@ export interface IContact {
 }
 
 export interface IItem {
+  id: number;
   category: TItemCategory;
   name: string;
   address: IAddress;

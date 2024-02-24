@@ -2,6 +2,7 @@ import { IItem } from "@/types";
 
 const items: IItem[] = [
   {
+    id: 201,
     category: "pharmacy",
     name: "Lékárna Na Františku",
     address: {
@@ -17,6 +18,7 @@ const items: IItem[] = [
   },
 
   {
+    id: 202,
     category: "pharmacy",
     name: "Lékárna U svaté Ludmily",
     address: {
@@ -32,6 +34,7 @@ const items: IItem[] = [
   },
 
   {
+    id: 203,
     category: "pharmacy",
     name: "Lékárna Thomayerova nemocnice",
     address: {
@@ -47,6 +50,7 @@ const items: IItem[] = [
   },
 
   {
+    id: 204,
     category: "pharmacy",
     name: "Lékárna Motol",
     address: {
@@ -62,6 +66,7 @@ const items: IItem[] = [
   },
 
   {
+    id: 205,
     category: "pharmacy",
     name: "Lékárna Benu",
     address: {
@@ -77,6 +82,7 @@ const items: IItem[] = [
   },
 
   {
+    id: 206,
     category: "pharmacy",
     name: "Lékárna Malešice",
     address: {
@@ -92,6 +98,7 @@ const items: IItem[] = [
   },
 
   {
+    id: 207,
     category: "pharmacy",
     name: "Lékárna Šustova",
     address: {

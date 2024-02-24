@@ -2,6 +2,7 @@ import { IItem } from "@/types";
 
 const items: IItem[] = [
   {
+    id: 301,
     category: "vet",
     name: "Veterinární pohotovost Duchek",
     address: {
@@ -19,6 +20,7 @@ const items: IItem[] = [
   },
 
   {
+    id: 302,
     category: "vet",
     name: "Veterinární pohotovost Erika",
     address: {
@@ -35,6 +37,7 @@ const items: IItem[] = [
   },
 
   {
+    id: 303,
     category: "vet",
     name: "Veterinární pohotovost AA Vet",
     address: {
@@ -52,6 +55,7 @@ const items: IItem[] = [
   },
 
   {
+    id: 304,
     category: "vet",
     name: "Veterinární pohotovost IVET",
     address: {
