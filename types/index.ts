@@ -35,6 +35,7 @@ export interface IItem {
   contact: IContact;
   coordinates: [number, number];
   googleMapsUrl: string;
+  // Must be provided even if empty to be able to be parsed by Swift
   keywords: string[];
 }
 
