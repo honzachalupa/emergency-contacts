@@ -36,6 +36,7 @@ const items: IItem[] = [
     },
     coordinates: [50.07366473019427, 14.339802577044816],
     googleMapsUrl: "https://maps.app.goo.gl/c5tYkk2TLSVScoZz8",
+    keywords: [],
   },
 
   {
@@ -73,6 +74,7 @@ const items: IItem[] = [
     },
     coordinates: [50.11588287296042, 14.464298271220448],
     googleMapsUrl: "https://maps.app.goo.gl/mXcQkwCEaWNoqFfy8",
+    keywords: [],
   },
 
   {
@@ -91,6 +93,7 @@ const items: IItem[] = [
     },
     coordinates: [50.07629237648254, 14.475488488265587],
     googleMapsUrl: "https://maps.app.goo.gl/gmf2uDqFZNVTdBmc9",
+    keywords: [],
   },
 
   {
@@ -109,6 +112,7 @@ const items: IItem[] = [
     },
     coordinates: [50.08899055359174, 14.362616551251657],
     googleMapsUrl: "https://maps.app.goo.gl/aWbhxLo9qcDcXecd8",
+    keywords: [],
   },
 
   {
@@ -126,6 +130,7 @@ const items: IItem[] = [
     },
     coordinates: [50.027631328420476, 14.489504771815515],
     googleMapsUrl: "https://maps.app.goo.gl/x8rqcehKjKgLsn7m8",
+    keywords: [],
   },
 
   {
@@ -144,6 +149,7 @@ const items: IItem[] = [
     },
     coordinates: [50.073801483438544, 14.420476558391279],
     googleMapsUrl: "https://maps.app.goo.gl/9gzpxnoXGtZTs8pV9",
+    keywords: [],
   },
 
   {
