@@ -1,15 +1,15 @@
 import data from "@/context/data";
-import { NextRequest } from "next/server";
+// import { NextRequest } from "next/server";
 
-export async function GET(request: NextRequest) {
-  const url = new URL(request.url);
+export async function GET(/* request: NextRequest */) {
+  /* const url = new URL(request.url);
   const apiKey = url.searchParams.get("apiKey");
 
-  if (apiKey === process.env.API_KEY) {
-    return Response.json(data);
-  }
+  if (apiKey === process.env.API_KEY) { */
+  return Response.json(data);
+  /* }
 
   return new Response(null, {
     status: 401,
-  });
+  }); */
 }
