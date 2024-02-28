@@ -9,7 +9,7 @@ const items: IItem[] = [
       street: "Vídeňská 800",
       district: "Praha 4",
       city: "Praha",
-      note: "pavilon B1 - vpravo od hlavní brány",
+      note: "pavilon B1",
     },
     contact: {
       phoneNumbers: [261082520, 603566584],
@@ -17,6 +17,7 @@ const items: IItem[] = [
     },
     coordinates: [50.030167844191574, 14.45642939820309],
     googleMapsUrl: "https://maps.app.goo.gl/G7HisqfZvnZyDb3H9",
+    keywords: ["adult-care", "child-care", "stomatology"],
   },
 
   {
@@ -27,18 +28,37 @@ const items: IItem[] = [
       street: "V Úvalu 84",
       district: "Praha 5",
       city: "Praha",
-      note: "modrá budova P",
+      note: "budova P",
     },
     contact: {
       phoneNumbers: [224438590],
       url: "https://www.fnmotol.cz/kliniky-a-ambulance/kliniky-dospela-cast/oddeleni-lspp-pro-dospele-pohotovost/",
     },
-    coordinates: [50.07500749583149, 14.34089017491106],
-    googleMapsUrl: "hhttps://maps.app.goo.gl/5FEkx9rPESeqZ2cv7",
+    coordinates: [50.07366473019427, 14.339802577044816],
+    googleMapsUrl: "https://maps.app.goo.gl/c5tYkk2TLSVScoZz8",
   },
 
   {
     id: 103,
+    category: "hospital",
+    name: "Nemocnice Motol - Dětská pohotovost",
+    address: {
+      street: "V Úvalu 84",
+      district: "Praha 5",
+      city: "Praha",
+      note: "budova E",
+    },
+    contact: {
+      phoneNumbers: [224433652, 224433653],
+      url: "https://www.fnmotol.cz/kliniky-a-ambulance/kliniky-detska-cast/oddeleni-urgentniho-prijmu-a-lspp-deti/#detska-pohotovost-detsky-prijem",
+    },
+    coordinates: [50.07432120111059, 14.342987482813633],
+    googleMapsUrl: "https://maps.app.goo.gl/D19ihieoa1R651Ra8",
+    keywords: ["child-care"],
+  },
+
+  {
+    id: 104,
     category: "hospital",
     name: "Nemocnice Na Bulovce",
     address: {
@@ -56,7 +76,7 @@ const items: IItem[] = [
   },
 
   {
-    id: 104,
+    id: 105,
     category: "hospital",
     name: "Nemocnice Královské Vinohrady",
     address: {
@@ -74,7 +94,7 @@ const items: IItem[] = [
   },
 
   {
-    id: 105,
+    id: 106,
     category: "hospital",
     name: "Ústřední vojenská nemocnice",
     address: {
@@ -92,7 +112,7 @@ const items: IItem[] = [
   },
 
   {
-    id: 106,
+    id: 107,
     category: "hospital",
     name: "Poliklinika Šustova",
     address: {
@@ -106,6 +126,80 @@ const items: IItem[] = [
     },
     coordinates: [50.027631328420476, 14.489504771815515],
     googleMapsUrl: "https://maps.app.goo.gl/x8rqcehKjKgLsn7m8",
+  },
+
+  {
+    id: 108,
+    category: "hospital",
+    name: "Všeobecná fakultní Nemocnice",
+    address: {
+      street: "U Nemocnice 2094",
+      district: "Praha 2",
+      city: "Praha",
+      note: "naproti přes ulici od hlavní budovy",
+    },
+    contact: {
+      phoneNumbers: [224962928],
+      url: "https://www.vfn.cz/pacienti/kliniky-ustavy/spolecny-prijem-interne-nemocnych-spin/",
+    },
+    coordinates: [50.073801483438544, 14.420476558391279],
+    googleMapsUrl: "https://maps.app.goo.gl/9gzpxnoXGtZTs8pV9",
+  },
+
+  {
+    id: 109,
+    category: "hospital",
+    name: "VFN - Stomatochirurgie",
+    address: {
+      street: "U Nemocnice 2",
+      district: "Praha 2",
+      city: "Praha",
+      note: "pavilony A10 a A11",
+    },
+    contact: {
+      phoneNumbers: [224963138],
+      url: "https://www.vfn.cz/pacienti/kliniky-ustavy/stomatologicka-klinika/",
+    },
+    coordinates: [50.0734319, 14.4218489],
+    googleMapsUrl: "https://maps.app.goo.gl/gJsfCCQiuzQsEG2h8",
+    keywords: ["stomatology"],
+  },
+
+  {
+    id: 110,
+    category: "hospital",
+    name: "VFN - Oční klinika",
+    address: {
+      street: "U Nemocnice 2",
+      district: "Praha 2",
+      city: "Praha",
+      note: "pavilon A6",
+    },
+    contact: {
+      phoneNumbers: [224962349, 224962344],
+      url: "https://www.vfn.cz/pacienti/kliniky-ustavy/ocni-klinika/",
+    },
+    coordinates: [50.07270183002834, 14.420669034990032],
+    googleMapsUrl: "https://maps.app.goo.gl/gJsfCCQiuzQsEG2h8",
+    keywords: ["ophthalmology"],
+  },
+
+  {
+    id: 111,
+    category: "hospital",
+    name: "VFN - Klinika dětského a dorostového lékařství",
+    address: {
+      street: "Ke Karlovu 455",
+      district: "Praha 2",
+      city: "Praha",
+    },
+    contact: {
+      phoneNumbers: [224967777],
+      url: "https://www.vfn.cz/pacienti/kliniky-ustavy/klinika-detskeho-a-dorostoveho-lekarstvi/",
+    },
+    coordinates: [50.069836231412374, 14.428629644282651],
+    googleMapsUrl: "https://maps.app.goo.gl/wWMetjahqiDbwiAH8",
+    keywords: ["child-care"],
   },
 ];
 

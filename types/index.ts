@@ -35,6 +35,7 @@ export interface IItem {
   contact: IContact;
   coordinates: [number, number];
   googleMapsUrl: string;
+  keywords?: string[];
 }
 
 export interface IItemWithDistance extends IItem {
