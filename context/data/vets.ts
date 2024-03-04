@@ -17,7 +17,6 @@ const items: IItem[] = [
     },
     coordinates: [50.05716590517126, 14.323807131936238],
     googleMapsUrl: "https://maps.app.goo.gl/QbHrsPjHhHTiJa4X9",
-    keywords: [],
   },
 
   {
@@ -35,7 +34,6 @@ const items: IItem[] = [
     },
     coordinates: [50.106510136458645, 14.475127327041552],
     googleMapsUrl: "https://maps.app.goo.gl/ypTp8qGipMk59fHg6",
-    keywords: [],
   },
 
   {
@@ -54,7 +52,6 @@ const items: IItem[] = [
     },
     coordinates: [50.02438445554914, 14.521309215220395],
     googleMapsUrl: "https://maps.app.goo.gl/oK4zcM5Zspo8UqHi6",
-    keywords: [],
   },
 
   {
@@ -73,7 +70,6 @@ const items: IItem[] = [
     },
     coordinates: [50.01573755394979, 14.446284610471366],
     googleMapsUrl: "https://maps.app.goo.gl/jSqEmhign2uQTFhv8",
-    keywords: [],
   },
 ];
 
